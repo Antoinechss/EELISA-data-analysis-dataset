@@ -31,8 +31,13 @@ COUNTRY_CODE_TO_NAME = {
     "ch": "Switzerland",
 }
 
+# NUTS1 and NUTS2 tokens-area classification
+
 NUTS_REGIONS = {
-    # 🇦🇹 AUSTRIA
+    # AUSTRIA (AT) 
+    "AT1": "Eastern Austria",
+    "AT2": "Southern Austria",
+    "AT3": "Western Austria",
     "AT11": "Burgenland",
     "AT12": "Lower Austria",
     "AT13": "Vienna",
@@ -43,20 +48,14 @@ NUTS_REGIONS = {
     "AT33": "Tyrol",
     "AT34": "Vorarlberg",
 
-    # 🇧🇪 BELGIUM
-    "BE10": "Brussels-Capital",
-    "BE21": "Antwerp",
-    "BE22": "Limburg",
-    "BE23": "East Flanders",
-    "BE24": "Flemish Brabant",
-    "BE25": "West Flanders",
-    "BE31": "Walloon Brabant",
-    "BE32": "Hainaut",
-    "BE33": "Liège",
-    "BE34": "Luxembourg",
-    "BE35": "Namur",
+    # BELGIUM (BE) 
+    "BE1": "Brussels-Capital",
+    "BE2": "Flanders",
+    "BE3": "Wallonia",
 
-    # 🇧🇬 BULGARIA
+    # BULGARIA (BG)
+    "BG3": "Northern and Eastern Bulgaria",
+    "BG4": "South-Western and South-Central Bulgaria",
     "BG31": "North-West",
     "BG32": "North-Central",
     "BG33": "North-East",
@@ -64,7 +63,8 @@ NUTS_REGIONS = {
     "BG41": "South-West",
     "BG42": "South-Central",
 
-    # 🇨🇭 SWITZERLAND
+    # SWITZERLAND (CH) 
+    "CH0": "Switzerland",
     "CH01": "Northwestern Switzerland",
     "CH02": "Eastern Switzerland",
     "CH03": "Central Switzerland",
@@ -73,10 +73,12 @@ NUTS_REGIONS = {
     "CH06": "Midland Switzerland",
     "CH07": "Ticino",
 
-    # 🇨🇾 CYPRUS
+    # CYPRUS (CY)
+    "CY0": "Cyprus",
     "CY00": "Cyprus (entire island)",
 
-    # 🇨🇿 CZECHIA
+    # CZECHIA (CZ)
+    "CZ0": "Czech Republic",
     "CZ01": "Prague",
     "CZ02": "Central Bohemia",
     "CZ03": "Southwest",
@@ -86,14 +88,31 @@ NUTS_REGIONS = {
     "CZ07": "Central Moravia",
     "CZ08": "Moravia-Silesia",
 
-    # 🇩🇰 DENMARK
+    # DENMARK (DK)
+    "DK0": "Denmark",
     "DK01": "Capital Region",
     "DK02": "Zealand",
     "DK03": "Southern Denmark",
     "DK04": "Central Jutland",
     "DK05": "North Jutland",
 
-    # 🇩🇪 GERMANY
+    # GERMANY (DE)
+    "DE1": "Baden-Württemberg",
+    "DE2": "Bavaria",
+    "DE3": "Berlin",
+    "DE4": "Brandenburg",
+    "DE5": "Bremen",
+    "DE6": "Hamburg",
+    "DE7": "Hesse",
+    "DE8": "Mecklenburg-Vorpommern",
+    "DE9": "Lower Saxony",
+    "DEA": "North Rhine-Westphalia",
+    "DEB": "Rhineland-Palatinate",
+    "DEC": "Saarland",
+    "DED": "Saxony",
+    "DEE": "Saxony-Anhalt",
+    "DEF": "Thuringia",
+    "DEG": "Schleswig-Holstein",
     "DE11": "Stuttgart",
     "DE12": "Karlsruhe",
     "DE13": "Freiburg",
@@ -133,10 +152,18 @@ NUTS_REGIONS = {
     "DEF0": "Thuringia",
     "DEG0": "Schleswig-Holstein",
 
-    # 🇪🇪 ESTONIA
+    # ESTONIA (EE)
+    "EE0": "Estonia",
     "EE00": "Estonia",
 
-    # 🇪🇸 SPAIN
+    # SPAIN (ES)
+    "ES1": "North-West",
+    "ES2": "North-East",
+    "ES3": "Madrid",
+    "ES4": "Centre",
+    "ES5": "East",
+    "ES6": "South",
+    "ES7": "Canary Islands",
     "ES11": "Galicia",
     "ES12": "Asturias",
     "ES13": "Cantabria",
@@ -157,13 +184,24 @@ NUTS_REGIONS = {
     "ES64": "Melilla",
     "ES70": "Canary Islands",
 
-    # 🇫🇮 FINLAND
+    # FINLAND (FI)
+    "FI1": "Mainland Finland",
+    "FI2": "Åland",
     "FI19": "Southern Finland",
     "FI1C": "Western Finland",
     "FI1D": "Northern & Eastern Finland",
     "FI20": "Åland",
 
-    # 🇫🇷 FRANCE
+    # FRANCE (FR)
+    "FR1": "Île-de-France",
+    "FR2": "Centre-Val de Loire",
+    "FR3": "Bourgogne-Franche-Comté",
+    "FR4": "Normandy",
+    "FR5": "Hauts-de-France",
+    "FR6": "Grand Est",
+    "FR7": "Pays de la Loire",
+    "FR8": "Brittany",
+    "FR9": "Nouvelle-Aquitaine",
     "FRA": "Guadeloupe",
     "FRB": "Martinique",
     "FRC": "Guyane",
@@ -174,13 +212,16 @@ NUTS_REGIONS = {
     "FRH": "Occitanie",
     "FRI": "Auvergne-Rhône-Alpes",
     "FRJ": "Île-de-France",
-    "FR1": "Île-de-France",
     "FRK": "Bourgogne-Franche-Comté",
     "FRL": "Provence-Alpes-Côte d'Azur",
     "FRM": "Corse",
     "FRY": "French Overseas Territories",
 
-    # 🇬🇷 GREECE
+    # GREECE (EL)
+    "EL3": "Attica",
+    "EL4": "Aegean Islands-Crete",
+    "EL5": "Northern Greece",
+    "EL6": "Central Greece",
     "EL30": "Attica",
     "EL41": "North Aegean",
     "EL42": "South Aegean",
@@ -195,12 +236,16 @@ NUTS_REGIONS = {
     "EL63": "Central Greece",
     "EL64": "Peloponnese",
 
-    # 🇭🇷 CROATIA
+    # CROATIA (HR)
+    "HR0": "Croatia",
     "HR02": "Panonia",
     "HR03": "Adriatic Croatia",
     "HR06": "Continental Croatia",
 
-    # 🇭🇺 HUNGARY
+    # HUNGARY (HU)
+    "HU1": "Central Hungary",
+    "HU2": "Transdanubia",
+    "HU3": "Great Plain and North",
     "HU11": "Budapest",
     "HU12": "Pest",
     "HU21": "Central Transdanubia",
@@ -210,12 +255,18 @@ NUTS_REGIONS = {
     "HU32": "Northern Great Plain",
     "HU33": "Southern Great Plain",
 
-    # 🇮🇪 IRELAND
+    # IRELAND (IE)
+    "IE0": "Ireland",
     "IE04": "Northern & Western Region",
     "IE05": "Eastern & Midland Region",
     "IE06": "Southern Region",
 
-    # 🇮🇹 ITALY
+    # ITALY (IT)
+    "ITC": "Northwest",
+    "ITF": "South",
+    "ITG": "Islands",
+    "ITH": "Northeast",
+    "ITI": "Centre",
     "ITC1": "Piemonte",
     "ITC2": "Valle d'Aosta",
     "ITC3": "Liguria",
@@ -238,19 +289,27 @@ NUTS_REGIONS = {
     "ITI3": "Marche",
     "ITI4": "Lazio",
 
-    # 🇱🇻 LATVIA
+    # LATVIA (LV)
+    "LV0": "Latvia",
     "LV00": "Latvia",
 
-    # 🇱🇹 LITHUANIA
+    # LITHUANIA (LT)
+    "LT0": "Lithuania",
     "LT00": "Lithuania",
 
-    # 🇱🇺 LUXEMBOURG
+    # LUXEMBOURG
+    "LU0": "Luxembourg",
     "LU00": "Luxembourg",
 
-    # 🇲🇹 MALTA
+    # MALTA
+    "MT0": "Malta",
     "MT00": "Malta",
 
-    # 🇳🇱 NETHERLANDS
+    # NETHERLANDS (NL)
+    "NL1": "Northern Netherlands",
+    "NL2": "Eastern Netherlands",
+    "NL3": "Western Netherlands",
+    "NL4": "Southern Netherlands",
     "NL11": "Groningen",
     "NL12": "Friesland",
     "NL13": "Drenthe",
@@ -264,7 +323,8 @@ NUTS_REGIONS = {
     "NL41": "North Brabant",
     "NL42": "Limburg",
 
-    # 🇳🇴 NORWAY
+    # NORWAY (NO)
+    "NO0": "Norway",
     "NO02": "Innlandet",
     "NO06": "Trøndelag",
     "NO07": "Northern Norway",
@@ -273,7 +333,14 @@ NUTS_REGIONS = {
     "NO0A": "Agder",
     "NO0B": "Vestlandet",
 
-    # 🇵🇱 POLAND
+    # POLAND (PL)
+    "PL2": "South",
+    "PL4": "North-West",
+    "PL5": "South-West",
+    "PL6": "Central",
+    "PL7": "Mazowieckie",
+    "PL8": "South-East",
+    "PL9": "North",
     "PL21": "Małopolskie",
     "PL22": "Śląskie",
     "PL41": "Wielkopolskie",
@@ -291,7 +358,10 @@ NUTS_REGIONS = {
     "PL91": "Pomorskie",
     "PL92": "Kujawsko-Pomorskie",
 
-    # 🇵🇹 PORTUGAL
+    # PORTUGAL (PT)
+    "PT1": "Mainland Portugal",
+    "PT2": "Azores",
+    "PT3": "Madeira",
     "PT11": "North",
     "PT15": "Central",
     "PT16": "Lisbon",
@@ -300,7 +370,11 @@ NUTS_REGIONS = {
     "PT20": "Azores",
     "PT30": "Madeira",
 
-    # 🇷🇴 ROMANIA
+    # ROMANIA (RO)
+    "RO1": "Macroregion One",
+    "RO2": "Macroregion Two",
+    "RO3": "Macroregion Three",
+    "RO4": "Macroregion Four",
     "RO11": "North-West",
     "RO12": "North-East",
     "RO21": "South-East",
@@ -309,17 +383,22 @@ NUTS_REGIONS = {
     "RO32": "South-West Oltenia",
     "RO41": "West",
 
-    # 🇸🇮 SLOVENIA
+    # SLOVENIA (SI)
+    "SI0": "Slovenia",
     "SI03": "Eastern Slovenia",
     "SI04": "Western Slovenia",
 
-    # 🇸🇰 SLOVAKIA
+    # SLOVAKIA (SK)
+    "SK0": "Slovakia",
     "SK01": "Bratislava Region",
     "SK02": "Western Slovakia",
     "SK03": "Central Slovakia",
     "SK04": "Eastern Slovakia",
 
-    # 🇸🇪 SWEDEN
+    # SWEDEN (SE)
+    "SE1": "East Sweden",
+    "SE2": "South Sweden",
+    "SE3": "North Sweden",
     "SE11": "Stockholm",
     "SE12": "East Middle Sweden",
     "SE21": "Småland and the Islands",
@@ -327,5 +406,59 @@ NUTS_REGIONS = {
     "SE23": "West Sweden",
     "SE31": "North Middle Sweden",
     "SE32": "Central Norrland",
-    "SE33": "Upper Norrland"
+    "SE33": "Upper Norrland",
+
+    # UNITED KINGDOM (UK)
+    "UKC": "North East",
+    "UKD": "North West",
+    "UKE": "Yorkshire and the Humber",
+    "UKF": "East Midlands",
+    "UKG": "West Midlands",
+    "UKH": "East of England",
+    "UKI": "London",
+    "UKJ": "South East",
+    "UKK": "South West",
+    "UKL": "Wales",
+    "UKM": "Scotland",
+    "UKN": "Northern Ireland",
+
+    # TURKEY (TR) – NUTS1 + NUTS2
+    "TR1": "West Anatolia",
+    "TR2": "Aegean",
+    "TR3": "Mediterranean",
+    "TR4": "East Marmara",
+    "TR5": "West Marmara",
+    "TR6": "Central Anatolia",
+    "TR7": "West Black Sea",
+    "TR8": "East Black Sea",
+    "TR9": "Northeast Anatolia",
+    "TRA": "Central East Anatolia",
+    "TRB": "Southeast Anatolia",
+
+    "TR10": "Istanbul",
+    "TR21": "Tekirdağ, Edirne, Kırklareli",
+    "TR22": "Balıkesir, Çanakkale",
+    "TR31": "İzmir",
+    "TR32": "Aydın, Denizli, Muğla",
+    "TR33": "Manisa, Afyon, Kütahya, Uşak",
+    "TR41": "Bursa, Eskişehir, Bilecik",
+    "TR42": "Kocaeli, Sakarya, Düzce, Bolu, Yalova",
+    "TR51": "Ankara",
+    "TR52": "Konya, Karaman",
+    "TR61": "Antalya, Isparta, Burdur",
+    "TR62": "Adana, Mersin",
+    "TR63": "Hatay, Kahramanmaraş, Osmaniye",
+    "TR71": "Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir",
+    "TR72": "Kayseri, Sivas, Yozgat",
+    "TR81": "Zonguldak, Karabük, Bartın",
+    "TR82": "Kastamonu, Çankırı, Sinop",
+    "TR83": "Samsun, Tokat, Çorum, Amasya",
+    "TR90": "Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",
+    "TRA1": "Erzurum, Erzincan, Bayburt",
+    "TRA2": "Ağrı, Kars, Iğdır, Ardahan",
+    "TRB1": "Malatya, Elazığ, Bingöl, Tunceli",
+    "TRB2": "Van, Muş, Bitlis, Hakkari",
+    "TRC1": "Gaziantep, Adıyaman, Kilis",
+    "TRC2": "Şanlıurfa, Diyarbakır",
+    "TRC3": "Mardin, Batman, Şırnak, Siirt"
 }

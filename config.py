@@ -1,4 +1,4 @@
-MODE = "test"
+MODE = "full"
 
 EURES_URL = "https://europa.eu/eures/api/jv-searchengine/public/jv-search/search"
 
@@ -16,13 +16,15 @@ COUNTRY_CODES = [
     "pl", "pt", "ro", "si", "sk", "fi", "se", "no", "ch"
 ]
 
-EELISA_COUNTRIES = {"fr", "hu", "ro", "de", "it", "tr", "ch"}
+EELISA_COUNTRIES = {"fr", "hu", "ro", "de", "it", "ch"}  
 
 # Limits
-RESULTS_PER_PAGE = 15
-MAX_JOBS_PER_COUNTRY = 100    
-JOBS_PER_KEYWORD = 2  
-REQUEST_DELAY = 1.0             
+RESULTS_PER_PAGE = 40
+JOBS_PER_NON_EELISA_COUNTRY = 300
+JOBS_PER_EELISA_COUNTRY = 700    
+JOBS_PER_KEYWORD_EELISA = JOBS_PER_EELISA_COUNTRY//44
+JOBS_PER_KEYWORD_NON_EELISA = JOBS_PER_NON_EELISA_COUNTRY//44 
+REQUEST_DELAY = 0.4   
 
 OUTPUT_CSV = "eures_jobs_full.csv"
 
@@ -147,3 +149,49 @@ DOMAIN_PATTERNS = [
         "economist", "derivatives", "market risk"
     ]),
 ]
+
+FIELD_KEYWORDS = {
+    "data science": ["data science", "data scientist", "machine learning", 
+                     "deep learning", "big data", "analytics"],
+    "Artificial Intelligence": ["artificial intelligence", "ai", 
+                                "machine learning", "deep learning", "llm", 
+                                "gpt"],
+    "Machine Learning": ["machine learning", "ml engineer", "mlops"],
+    "Software Engineering": ["software engineer", "developer", 
+                             "programmer", "software development", 
+                             "full stack", "backend", "frontend"],
+    "Cybersecurity & Information Security": ["cybersecurity", "security", 
+                                             "infosec", "devsecops"],
+    "Cloud, DevOps & Systems Engineering": ["cloud", "devops", "aws", 
+                                            "azure", "gcp", 
+                                            "system administrator", 
+                                            "infrastructure"],
+    "Telecommunications & Networking": ["network", "telecom", 
+                                        "telecommunications", "networking"],
+    "Robotics & Automation": ["robotics", "automation", 
+                              "robot", "automate"],
+    "Mechanical & Materials Engineering": ["mechanical", 
+                                           "materials", "mechanics", 
+                                           "cad", "solidworks"],
+    "Electrical & Electronics Engineering": ["electrical", 
+                                             "electronics", 
+                                             "circuit", "pcb", "electronic"],
+    "Civil Engineering": ["civil engineering", "construction", "bim"],
+    "Chemical & Process Engineering": ["chemical", "process engineer", 
+                                       "chemistry", "process"],
+    "Aeronautics & Aerospace Engineering": ["aeronautics", "aerospace", 
+                                            "aircraft", "avionics", "space"],
+    "Energy Engineering": ["energy", "renewable", "solar", "wind", "hydro", 
+                           "battery"],
+    "Industrial & Operations Engineering": ["industrial", "operations", 
+                                            "manufacturing", "production"],
+    "Biomedical Engineering": ["biomedical", "bioengineering", "medical device", "healthcare"],
+    "Sustainability & Green Technologies": ["sustainability", "green", 
+                                            "environmental", "climate", "eco"],
+    "Earth & Environmental Systems": ["geology", "earth", "environmental", 
+                                      "hydrology", "climate"],
+    "Business & Innovation": ["business", "innovation", "product manager", 
+                              "project manager"],
+    "Research & Academia": ["phd", "postdoc", "research", "university", 
+                            "academic", "thesis"],
+}

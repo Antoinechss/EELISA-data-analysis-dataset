@@ -2,9 +2,21 @@ import requests
 import pandas as pd
 import time
 import math
+import re
 from bs4 import BeautifulSoup
 from nuts import COUNTRY_CODE_TO_NAME, NUTS_REGIONS
-from config import MODE, EURES_URL, HEADERS, COUNTRY_CODES, EELISA_COUNTRIES, RESULTS_PER_PAGE, MAX_JOBS_PER_COUNTRY, REQUEST_DELAY, OUTPUT_CSV, DOMAIN_PATTERNS, SEARCH_KEYWORDS
+from config import (MODE,
+                    EURES_URL,
+                    HEADERS,
+                    COUNTRY_CODES,
+                    EELISA_COUNTRIES,
+                    JOBS_PER_EELISA_COUNTRY,
+                    RESULTS_PER_PAGE,
+                    JOBS_PER_NON_EELISA_COUNTRY,
+                    REQUEST_DELAY,
+                    OUTPUT_CSV,
+                    DOMAIN_PATTERNS,
+                    SEARCH_KEYWORDS)
 
 # -----------------------------
 # CONFIGS
@@ -12,7 +24,7 @@ from config import MODE, EURES_URL, HEADERS, COUNTRY_CODES, EELISA_COUNTRIES, RE
 
 if MODE == "test":
     print("\n=== RUNNING IN TEST MODE ===\n")
-    SELECTED_COUNTRIES = ["fr"]     
+    SELECTED_COUNTRIES = ["cz"]     
     SELECTED_KEYWORDS = ["engineer"]
 else:
     print("\n=== RUNNING FULL SCRAPER ===\n")
@@ -79,6 +91,50 @@ def extract_region_from_location_map(location_map: dict | None) -> str | None:
         return NUTS_REGIONS.get(nuts_prefix, nuts_prefix)
     except Exception:
         return None
+    
+import re
+
+def extract_company_from_text(text: str) -> str | None:
+    """
+    Extracts likely company names from job descriptions using multilingual patterns.
+    Returns None if nothing matches.
+    """
+
+    if not text:
+        return None
+
+    text_clean = text.replace("\n", " ").strip()
+
+    # --- 1. Most common multilingual patterns ---
+    patterns = [
+        r"for\s+([A-Z][A-Za-z0-9&\-\s']+)",                     # for Airbus
+        r"at\s+([A-Z][A-Za-z0-9&\-\s']+)",                      # at Siemens
+        r"join\s+([A-Z][A-Za-z0-9&\-\s']+)",                    # join L'Oréal
+        r"with\s+([A-Z][A-Za-z0-9&\-\s']+)",                    # with BMW
+
+        r"chez\s+([A-Z][A-Za-z0-9&\-\s']+)",                    # chez Dior (French)
+        r"pour\s+([A-Z][A-Za-z0-9&\-\s']+)",                    # pour Chanel / pour Airbus
+
+        # Recruiter phrasing
+        r"for our client\s+([A-Z][A-Za-z0-9&\-\s']+)",          # for our client L'Oréal
+        r"pour le compte de\s+([A-Z][A-Za-z0-9&\-\s']+)",       # pour le compte de Hermès
+        r"en nombre de\s+([A-Z][A-Za-z0-9&\-\s']+)",            # en nombre de X
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text_clean, flags=re.IGNORECASE)
+        if match:
+            name = match.group(1).strip()
+
+            # Clean trailing junk like commas or dots
+            name = re.sub(r"[.,;:]+$", "", name)
+
+            # Avoid false positives like "our team", "the company"
+            if len(name.split()) <= 6 and not name.lower().startswith(("the ", "our ")):
+                return name
+
+    return None
+
 
 # -----------------------------
 # CORE SCRAPING LOGIC
@@ -131,16 +187,23 @@ def fetch_page(country_code: str | None,
 
 
 def fetch_jobs_for_country(country_code: str,
-                           max_jobs: int = MAX_JOBS_PER_COUNTRY) -> list[dict]:
+                           max_jobs: int = JOBS_PER_NON_EELISA_COUNTRY) -> list[dict]:
     """
-    Fetch up to max_jobs for a given country across all SEARCH_KEYWORDS.
+    Fetch up to max_jobs for a given country, distributing jobs across all SELECTED_KEYWORDS.
     """
+    from config import JOBS_PER_KEYWORD_EELISA, JOBS_PER_KEYWORD_NON_EELISA
+
     all_jobs = []
     seen_ids = set()
+    if country_code in EELISA_COUNTRIES:
+        jobs_per_keyword = JOBS_PER_KEYWORD_EELISA
+    else:
+        jobs_per_keyword = JOBS_PER_KEYWORD_NON_EELISA
 
-    for kw in SEARCH_KEYWORDS:
+    for kw in SELECTED_KEYWORDS:
         page = 1
-        while len(all_jobs) < max_jobs:
+        kw_jobs = 0
+        while kw_jobs < jobs_per_keyword and len(all_jobs) < max_jobs:
             data = fetch_page(country_code, kw, page, RESULTS_PER_PAGE)
             time.sleep(REQUEST_DELAY)
 
@@ -164,9 +227,13 @@ def fetch_jobs_for_country(country_code: str,
                 country_name = infer_country_from_location_map(job.get("locationMap"))
                 domain = classify_domain(title, clean_desc)
 
-                # employer may be None
                 employer = job.get("employer")
                 company_name = employer.get("name") if isinstance(employer, dict) else None
+
+                if not company_name:
+                    extracted = extract_company_from_text(clean_desc)
+                    if extracted:
+                        company_name = extracted
 
                 all_jobs.append({
                     "job_id": job_id,
@@ -180,12 +247,10 @@ def fetch_jobs_for_country(country_code: str,
                     "full_description": clean_desc,
                 })
 
-
-
-                if len(all_jobs) >= max_jobs:
+                kw_jobs += 1
+                if kw_jobs >= jobs_per_keyword or len(all_jobs) >= max_jobs:
                     break
 
-            # Stop if fewer results than page size → last page
             if len(jvs) < RESULTS_PER_PAGE:
                 break
 
@@ -198,32 +263,41 @@ def fetch_jobs_for_country(country_code: str,
 # MAIN
 # -----------------------------
 
-if __name__ == "__main__":
-    all_rows = []
-
-    for code in SELECTED_COUNTRIES:
-        print(f"\n========== Scraping country: {code.upper()} ==========")
-        jobs = fetch_jobs_for_country(code, max_jobs=MAX_JOBS_PER_COUNTRY)
-        print(f"  -> Collected {len(jobs)} jobs for {code.upper()}")
-        all_rows.extend(jobs)
-
-    print(f"\nTotal jobs collected: {len(all_rows)}")
-
-    # Load existing file if it exists (to preserve past scraping)
-
-    try:
-        existing_df = pd.read_csv(OUTPUT_CSV)
-    except FileNotFoundError:
-        existing_df = pd.DataFrame()
-
-    # Combine old + new
+def save_results(existing_df, all_rows):
+    """
+    Saves current CSV when scraping interrupted mid run 
+    """
     df = pd.concat([existing_df, pd.DataFrame(all_rows)], ignore_index=True)
-
-    # Remove duplicates based on job_id
     df.drop_duplicates(subset="job_id", inplace=True)
-
-    # Save
     df.to_csv(OUTPUT_CSV, index=False)
     print(f"Saved dataset to {OUTPUT_CSV} (unique jobs: {len(df)})")
 
 
+if __name__ == "__main__":
+    all_rows = []
+    try:
+        existing_df = pd.read_csv(OUTPUT_CSV)
+        existing_ids = set(existing_df["job_id"])
+    except (FileNotFoundError, pd.errors.EmptyDataError):
+        existing_df = pd.DataFrame()
+        existing_ids = set()
+
+    try:
+        for code in SELECTED_COUNTRIES:
+            print(f"\n========== Scraping country: {code.upper()} ==========")
+            if code in EELISA_COUNTRIES:
+                max_jobs = JOBS_PER_EELISA_COUNTRY
+            else:
+                max_jobs = JOBS_PER_NON_EELISA_COUNTRY
+            jobs = fetch_jobs_for_country(code, max_jobs=max_jobs)
+            # Only add jobs not already in the CSV
+            new_jobs = [job for job in jobs if job["job_id"] not in existing_ids]
+            print(f"  -> Collected {len(new_jobs)} new jobs for {code.upper()}")
+            all_rows.extend(new_jobs)
+            existing_ids.update(job["job_id"] for job in new_jobs)
+
+        print(f"\nTotal new jobs collected: {len(all_rows)}")
+        save_results(existing_df, all_rows)
+    except KeyboardInterrupt:
+        print("\nInterrupted by user. Saving progress...")
+        save_results(existing_df, all_rows)
