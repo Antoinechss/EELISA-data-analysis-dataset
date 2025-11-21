@@ -1,6 +1,8 @@
 import pandas as pd
-from config import FIELD_KEYWORDS
+from scraping.config import FIELD_KEYWORDS
 
+jobs_dataset = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/eures_jobs_full.csv'
+df = pd.read_csv(jobs_dataset)
 
 # ------------------------
 # Infering field from job description

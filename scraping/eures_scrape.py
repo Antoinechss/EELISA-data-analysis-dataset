@@ -5,7 +5,7 @@ import math
 import re
 from bs4 import BeautifulSoup
 from nuts import COUNTRY_CODE_TO_NAME, NUTS_REGIONS
-from config import (MODE,
+from scraping.config import (MODE,
                     EURES_URL,
                     HEADERS,
                     COUNTRY_CODES,
@@ -91,8 +91,6 @@ def extract_region_from_location_map(location_map: dict | None) -> str | None:
         return NUTS_REGIONS.get(nuts_prefix, nuts_prefix)
     except Exception:
         return None
-    
-import re
 
 def extract_company_from_text(text: str) -> str | None:
     """
@@ -191,7 +189,7 @@ def fetch_jobs_for_country(country_code: str,
     """
     Fetch up to max_jobs for a given country, distributing jobs across all SELECTED_KEYWORDS.
     """
-    from config import JOBS_PER_KEYWORD_EELISA, JOBS_PER_KEYWORD_NON_EELISA
+    from scraping.config import JOBS_PER_KEYWORD_EELISA, JOBS_PER_KEYWORD_NON_EELISA
 
     all_jobs = []
     seen_ids = set()
