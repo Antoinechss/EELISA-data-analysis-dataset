@@ -58,6 +58,29 @@ SEARCH_KEYWORDS = [
     "innovation", "product manager", "project manager",
 ]
 
+# turkish translation for the turkish website queries 
+SEARCH_KEYWORDS_TR = [
+    "mühendis", "mühendislik", "mekanik", "elektrik",
+    "otomasyon", "robotik", "mekatronik",
+
+    "yazılım", "geliştirici", "programcı",
+    "bulut", "devops", "siber güvenlik", "ağ",
+
+    "veri", "veri bilimi", "veri analisti",
+    "makine öğrenimi", "yapay zeka",
+
+    "araştırma", "bilimci", "laboratuvar",
+    "doktora", "matematik",
+
+    "sürdürülebilirlik", "yenilenebilir",
+    "enerji", "çevre", "iklim",
+
+    "üretim", "endüstriyel", "kimya",
+    "malzeme", "biyomedikal",
+
+    "inovasyon", "ürün yöneticisi", "proje yöneticisi",
+]
+
 DOMAIN_PATTERNS = [
     ("Data Science", [
         "data scientist", "data science", "data analyst", "big data", "data mining"
