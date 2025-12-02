@@ -8,6 +8,7 @@ df = pd.read_csv(jobs_dataset)
 # Infering field from job description
 # ------------------------
 
+
 def infer_field(description):
     desc = str(description).lower()
     for field, keywords in FIELD_KEYWORDS.items():
