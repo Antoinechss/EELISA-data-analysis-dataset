@@ -1,7 +1,7 @@
 import pandas as pd
 from rapidfuzz import fuzz
 
-jobs_dataset = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/eures_jobs_full.csv'
+jobs_dataset = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs_eng.csv'
 df = pd.read_csv(jobs_dataset)
 
 # ------------------------
@@ -29,4 +29,4 @@ for block_val, block_df in df.groupby("block"):
                 to_drop.add(idx_j)
 df = df.drop(list(to_drop))
 df = df.drop(columns="block")
-df.to_csv("eures_jobs_full.csv", index=False)
+df.to_csv("eures_jobs_deduped.csv", index=False)
