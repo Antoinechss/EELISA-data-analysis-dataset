@@ -30,8 +30,8 @@ DIGCOMP_FRAMEWORK = [("Information and digital literacy",
 def show_digcomp_page():
     """Display the DigComp overview page"""
     
-    st.title("DigComp Competence Framework")
-    st.caption("European digital competence framework – 5 domains, 21 competences")
+    st.title("DigComp European Competence Framework")
+    st.caption("5 domains & 21 competences to assess digital abilities")
     
     # Add PDF download link
     col1, col2 = st.columns([3, 1])
@@ -49,8 +49,7 @@ def show_digcomp_page():
             st.warning("📄 Official documentation not found")
     
     st.markdown("---")
-    st.subheader("Digital Competence Domains")
-    
+
     domain_descriptions = {
         "Information and digital literacy": "Articulate information needs, locate and retrieve digital data, information and content.",
         "Communication and collaboration": "Communicate in digital environments, share resources through online tools, connect and collaborate with others.",

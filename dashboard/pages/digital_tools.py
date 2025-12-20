@@ -6,7 +6,6 @@ import re
 from collections import Counter
 from itertools import chain
 
-# Your TECH_TOOLS dictionary (same as original)
 TECH_TOOLS = {
     # =======================
     # Office & Productivity
@@ -16,7 +15,7 @@ TECH_TOOLS = {
     "word": ["word", "ms word", "microsoft word"],
     "outlook": ["outlook", "ms outlook"],
     "onenote": ["onenote"],
-    "access": ["access", "ms access"],
+    "ms access": ["ms access", "microsoft access"],
     "google_sheets": ["google sheets", "g sheets"],
     "google_docs": ["google docs"],
     "google_slides": ["google slides"],
@@ -86,7 +85,7 @@ TECH_TOOLS = {
     # =======================
     # Cloud & DevOps
     # =======================
-    "aws": ["aws", "amazon web services"],
+    "aws": ["aws", "amazon web services", "amazon"],
     "azure": ["azure", "microsoft azure"],
     "gcp": ["gcp", "google cloud"],
     "docker": ["docker"],
@@ -184,10 +183,11 @@ def extract_tech_tools(text, tech_dict):
 
     return list(found_tools)
 
+
 def show_digital_tools_page(df):
     """Display the Digital Tools analysis page"""
     
-    st.title("🔧 Digital Tools Analysis")
+    st.title("Digital Tools Analysis")
     st.caption("Most mentioned technical tools and technologies in job descriptions")
     
     # Process the data
