@@ -1,56 +1,63 @@
-import streamlit as st 
-import pandas as pd 
-import plotly.express as px
-from pages.homepage import show_job_offers_page
-from pages.greencomp_overview import show_greencomp_page
-from pages.digcomp_overview import show_digcomp_page
-from pages.digital_tools import show_digital_tools_page
-from pages.digcomp_profiles import show_digcomp_profiles_page 
-from PIL import Image
+import streamlit as st
+import pandas as pd
+from dashboard.views.overview import show_overview_page
+from dashboard.views.edu_lang import show_education_language_page
+from dashboard.views.skills import show_skills_page
+from dashboard.views.digcomp import show_digcomp_page
+from dashboard.views.greencomp import show_greencomp_page
+from dashboard.views.profiles import show_profiles_page
+from dashboard.views.home import show_home_page
 
-# Page configs 
+
+# Configs
 st.set_page_config(
     page_title="European Job Market Dashboard",
     layout="wide"
 )
-dataset_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
-df = pd.read_csv(dataset_path)
+
+# Datasets
+eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
+eur_jobs = pd.read_csv(eur_jobs_path)
 
 # Sidebar
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
     "Go to",
     [
-        "Job Offers Dataset",
-        "Digital Tools Analysis",
+        "Home",
+        "Overview",
+        "Education & Languages",
+        "Skills",
+        "GreenComp",
         "DigComp",
-        "GreenComp", 
-        "DigComp Profiles"
+        "Profiles"
     ]
 )
 
-# ---- Job Offers Dataset ----
-if page == "Job Offers Dataset":
-    show_job_offers_page(df)
+# ---- Homepage ----
+if page == "Home":
+    show_home_page()
 
-# ---- Digital Tools Analysis ----
-elif page == "Digital Tools Analysis":
-    show_digital_tools_page(df)
+# ---- Overview ----
+if page == "Overview":
+    show_overview_page(eur_jobs)
 
-# ---- DigComp ----
-elif page == "DigComp":
-    show_digcomp_page()
+# ---- Education & Languages ----
+elif page == "Education & Languages":
+    show_education_language_page(eur_jobs)
+
+# ---- Skills ----
+elif page == "Skills":
+    show_skills_page(eur_jobs)
 
 # ---- GreenComp ----
 elif page == "GreenComp":
-    show_greencomp_page()
+    show_greencomp_page(eur_jobs)
 
-# ---- DigComp Profiles ----
-elif page == "DigComp Profiles":
-    show_digcomp_profiles_page()
+# ---- DigComp ----
+elif page == "DigComp":
+    show_digcomp_page(eur_jobs)
 
-# ---- Digital Tools ----
-## TODO
-
-# ---- Education ----
-## TODO
+# ---- Profiles ----
+elif page == "Profiles":
+    show_profiles_page(eur_jobs)

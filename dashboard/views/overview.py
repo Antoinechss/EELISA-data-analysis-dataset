@@ -4,7 +4,7 @@ import pandas as pd
 from PIL import Image
 
 
-def show_job_offers_page(df):
+def show_overview_page(df):
     """Display the Job Offers Dataset page"""
 
     # =======================
