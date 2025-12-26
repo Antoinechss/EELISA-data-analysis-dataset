@@ -4,13 +4,11 @@ import base64
 from greencomp import GREENCOMP_FRAMEWORK
 
 def show_greencomp_page(df):
-    """Display the GreenComp overview page"""
-    
-    st.title("GreenComp European Competence Framework")
-    st.caption("4 domains & 12 competences to assess environmental abilities")
-    
-    # Add PDF download link
+
     col1, col2 = st.columns([3, 1])
+    with col1:
+        st.title("GreenComp European Competence Framework")
+        st.caption("4 domains & 12 competences to assess environmental abilities")
     with col2:
         try:
             with open('/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/GreenComp.pdf', "rb") as pdf_file:
@@ -39,3 +37,5 @@ def show_greencomp_page(df):
             competences = [comp for dom, comps in GREENCOMP_FRAMEWORK if dom == domain for comp in comps]
             for comp in competences:
                 st.write(f"• **{comp}**")
+
+    st.markdown("---")

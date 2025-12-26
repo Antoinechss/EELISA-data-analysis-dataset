@@ -3,12 +3,11 @@ import pandas as pd
 from digcomp import DIGCOMP_FRAMEWORK
 
 def show_digcomp_page(df):
-    
-    st.title("DigComp European Competence Framework")
-    st.caption("5 domains & 21 competences to assess digital abilities")
-    
-    # Add PDF download link
+        
     col1, col2 = st.columns([3, 1])
+    with col1: 
+        st.title("DigComp European Competence Framework")
+        st.caption("5 domains & 21 competences to assess digital abilities")
     with col2:
         try:
             with open('/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/DigComp.pdf', "rb") as pdf_file:
@@ -38,3 +37,5 @@ def show_digcomp_page(df):
             competences = [comp for dom, comps in DIGCOMP_FRAMEWORK if dom == domain for comp in comps]
             for comp in competences:
                 st.write(f"• **{comp}**")
+    
+    st.markdown("---")

@@ -40,7 +40,7 @@ if page == "Home":
 
 # ---- Overview ----
 if page == "Overview":
-    show_overview_page(eur_jobs)
+    show_overview_page()
 
 # ---- Education & Languages ----
 elif page == "Education & Languages":
