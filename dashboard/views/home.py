@@ -1,6 +1,4 @@
 import streamlit as st
-import plotly.express as px
-import pandas as pd
 from PIL import Image
 
 def show_home_page():
@@ -8,49 +6,61 @@ def show_home_page():
     # =======================
     # HEADER WITH LOGOS
     # =======================
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
 
     with col1:
         try:
             eelisa_logo = Image.open(
                 "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/eelisa_logo.png"
             )
-            st.image(eelisa_logo, width=150)
+            st.image(eelisa_logo, width=140)
         except:
-            st.write("EELISA Logo")
+            st.write("EELISA")
 
     with col2:
-        st.title("Job Offers Dataset")
+        st.markdown(
+            """
+            <h1 style="text-align: center; margin-bottom: 0;">
+            Reporting of the European Technical Job Market
+            </h1>
+            <h4 style="text-align: center; margin-top: 0;">
+            EELISA Data Science Mission
+            </h4>
+            <p style="text-align: center; font-size: 0.9em;">
+            Provided by Ponts Études Projets<br>
+            Antoine Chosson – École des Ponts ParisTech (IMI027)
+            </p>
+            """,
+            unsafe_allow_html=True
+        )
 
     with col3:
         try:
             pep_logo = Image.open(
                 "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/PEP_logo.png"
             )
-            st.image(pep_logo, width=150)
+            st.image(pep_logo, width=140)
         except:
-            st.write("PEP Logo")
+            st.write("PEP")
 
-    # =======================
-    # INTRODUCTION
-    # =======================
     st.markdown("---")
-    st.header("About this Dataset")
 
-    st.markdown("""
-    The dataset **job offers.csv** was delivered to **EELISA** on **10.12.2025** for research purposes within the framework of the 
-    **EELISA Data Science Mission**, which aims to mobilise data-driven methods to analyse major societal and economic transformations 
-    in Europe, including digitalisation, sustainability, and skills development.
+    # =======================
+    # CONTEXT & OBJECTIVES
+    # =======================
 
-    The dataset compiles job postings collected from multiple online recruitment platforms and harmonised to enable cross-country 
-    comparisons of labour market dynamics. It supports the analysis of education requirements, skill demand, and alignment with 
-    European digital and sustainability competence frameworks.
+    st.markdown(
+        """
+        ### Context and objectives
 
-    This dashboard provides an overview of the dataset’s structure, the methodological choices applied during data collection and 
-    preprocessing, and the key variables available for analysis. It also highlights the limitations inherent to web-scraped labour 
-    market data, the assumptions made during normalisation, and recommendations for safe and rigorous use in research and policy-oriented 
-    studies.
+        This dashboard was developed within the framework of the **EELISA Data Science Mission** to support the analysis of 
+        the European technical job market through large-scale job posting data. The project aims to leverage data science 
+        methods to better understand how education requirements, skills, and competences are articulated in job offers 
+        across countries and occupational fields.
 
-    **The objective** of this work is to ensure transparency, reproducibility, and a clear understanding of the dataset’s scope, 
-    so that it can be reliably used by researchers, academic partners, and stakeholders involved in the **EELISA Data Science Mission**.
-    """)
+        A central objective of this work is to contribute to the identification and characterisation of **emerging professional 
+        profiles** in the European labour market, with particular attention to the integration of **digital** and 
+        **sustainability-related competences**. By aligning job market signals with European competence frameworks, the 
+        dashboard supports evidence-based reflection on skills development, training pathways, and workforce transformation.
+        """
+    )

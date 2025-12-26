@@ -7,51 +7,31 @@ from PIL import Image
 def show_overview_page(df):
     """Display the Job Offers Dataset page"""
 
-    # =======================
-    # HEADER WITH LOGOS
-    # =======================
-    col1, col2, col3 = st.columns([1, 2, 1])
-
-    with col1:
-        try:
-            eelisa_logo = Image.open(
-                "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/eelisa_logo.png"
-            )
-            st.image(eelisa_logo, width=150)
-        except:
-            st.write("EELISA Logo")
-
-    with col2:
-        st.title("Job Offers Dataset")
-
-    with col3:
-        try:
-            pep_logo = Image.open(
-                "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/PEP_logo.png"
-            )
-            st.image(pep_logo, width=150)
-        except:
-            st.write("PEP Logo")
-
-    # =======================
-    # INTRODUCTION
-    # =======================
+    st.header("European Job Offers Dataset")
+    
     st.markdown("---")
-    st.header("About this Dataset")
 
     st.markdown("""
-    The dataset **job offers.csv** was delivered to EELISA on **10.12.2025** for research purposes as part of a broader initiative to 
-    analyse labour market trends, digital and green competencies, and emerging skill requirements across Europe. 
-    
-    It compiles job postings collected from multiple online recruitment platforms and harmonised to support cross-country comparison. 
-    This document provides an overview of the dataset's structure, the methodology used to collect and normalise the 
-    information, and the key variables included. 
-    
-    It also outlines the limitations inherent to web-scraped labour data, the assumptions applied during preprocessing, and 
-    recommendations for safe and rigorous use of the dataset in research and policy analysis.
-    
-    **The objective** of this note is to ensure transparency, reproducibility, and a clear understanding of the dataset's scope so that 
-    it can be reliably used by researchers, academic partners, and stakeholders involved in the **EELISA Data Science Mission**.
+    The dataset **job offers.csv** provides a harmonised collection of job postings used to analyse labour market characteristics 
+    across Europe. It aggregates vacancy data collected from multiple online recruitment platforms and has been processed to enable 
+    systematic comparison across countries, occupations, and skill categories.
+
+    Each record corresponds to a single job posting and includes structured metadata such as job title, country, region, and 
+    occupational classification based on the **ISCO** framework, alongside the full unstructured job description. The dataset 
+    combines both structured and textual information, allowing for quantitative analysis as well as semantic exploration of job 
+    requirements.
+
+    Prior to analysis, the data underwent a normalisation and cleaning process to reduce duplication, harmonise occupational 
+    labels, and standardise country-level information. Particular attention was given to ensuring consistency in occupational 
+    coding and to preserving the original content of job descriptions to support robust text-based analysis.
+
+    As the data originates from web-scraped job advertisements, it is subject to well-known limitations of online labour market data. 
+    These include potential sampling bias, uneven coverage across countries and sectors, and variability in how employers describe 
+    job requirements. The dataset should therefore be interpreted as a proxy for labour market demand rather than as a 
+    comprehensive representation of employment structures.
+
+    This overview section describes the dataset’s scope, structure, and key variables, and provides essential context for the 
+    subsequent analytical sections of the dashboard.
     """)
 
     st.markdown("---")

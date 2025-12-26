@@ -22,7 +22,7 @@ eur_jobs = pd.read_csv(eur_jobs_path)
 # Sidebar
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
-    "Go to",
+    " ",
     [
         "Home",
         "Overview",
