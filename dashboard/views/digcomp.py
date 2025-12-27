@@ -6,6 +6,7 @@ from dashboard.style import show_chart_with_card
 from analysis.digital_tools import display_tools_analysis
 import plotly.graph_objects as go
 
+# Load datasets
 eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
 eur_jobs = pd.read_csv(eur_jobs_path)
 path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/extractions.csv'
@@ -13,6 +14,7 @@ base_df = pd.read_csv(path)
 
 def show_digcomp_page(df):
         
+    # Page title and documentation link
     col1, col2 = st.columns([3, 1])
     with col1: 
         st.title("DigComp European Competence Framework")
@@ -32,6 +34,7 @@ def show_digcomp_page(df):
     
     st.markdown("---")
 
+    # Domain descriptions
     domain_descriptions = {
         "Information and digital literacy": "Articulate information needs, locate and retrieve digital data, information and content.",
         "Communication and collaboration": "Communicate in digital environments, share resources through online tools, connect and collaborate with others.",
@@ -40,6 +43,7 @@ def show_digcomp_page(df):
         "Problem-solving": "Solve problems and make informed decisions about the most appropriate digital tools according to the purpose or need."
     }
     
+    # Display domain descriptions and competences
     for domain, description in domain_descriptions.items():
         with st.expander(f"{domain}"):
             st.write(description)
@@ -58,10 +62,12 @@ def show_digcomp_page(df):
     with col1:
         dig_df = base_df.copy()
 
+        # Restore list structure for competences
         dig_df["digital_competences"] = dig_df["digital_competences"].apply(
             restore_list_safe
         )
 
+        # Explode competences for individual analysis
         dig_exploded = dig_df.explode("digital_competences")
         dig_exploded = dig_exploded[
             dig_exploded["digital_competences"].notna()
@@ -98,7 +104,7 @@ def show_digcomp_page(df):
                 if len(categories) < 3:
                     st.info("Not enough DigComp competences to build a radar chart.")
                 else:
-                    # Close the loop
+                    # Close the loop for radar chart
                     categories = categories + [categories[0]]
                     values = values + [values[0]]
 
@@ -132,12 +138,38 @@ def show_digcomp_page(df):
                     )
 
                     show_chart_with_card(fig, height=None)
+    
     with col2:
-        pass
+        # Calculate share of jobs mentioning DigComp competences
+        dig_df = base_df.copy()
+        
+        # Process digital competences
+        dig_df["digital_competences"] = dig_df["digital_competences"].apply(restore_list_safe)
+        
+        # Check which jobs have at least one DigComp competence
+        dig_df["has_digcomp"] = dig_df["digital_competences"].apply(
+            lambda x: isinstance(x, list) and len(x) > 0 and any(comp.strip() for comp in x)
+        )
+        
+        # Calculate percentage
+        digcomp_share = dig_df["has_digcomp"].mean() * 100
+        
+        # Create metric chart
+        fig_metric = go.Figure(go.Indicator(
+            mode="number",
+            value=digcomp_share,
+            number={"suffix": "%"},
+            title={"text": "Jobs Explicitly Mentioning DigComp Competences"}
+        ))
+        fig_metric.update_layout(
+            margin=dict(t=35, l=20, r=20, b=15),
+            font=dict(color="#1F2933")
+        )
+        show_chart_with_card(fig_metric, height=170)
+        
     with col3:
         pass
 
-    
-
+    # Display digital tools analysis
     display_tools_analysis(eur_jobs)
 
