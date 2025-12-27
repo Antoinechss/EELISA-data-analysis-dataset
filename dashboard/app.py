@@ -8,16 +8,52 @@ from dashboard.views.greencomp import show_greencomp_page
 from dashboard.views.profiles import show_profiles_page
 from dashboard.views.home import show_home_page
 
-
 # Configs
 st.set_page_config(
     page_title="European Job Market Dashboard",
     layout="wide"
 )
 
+# More targeted CSS - only style charts, not all elements
+st.markdown("""
+<style>
+/* Set page background */
+.main .block-container {
+    background-color: #f8f9fa;
+}
+
+/* ONLY target plotly chart containers - be very specific */
+div[data-testid="stPlotlyChart"] {
+    background-color: white !important;
+    padding: 1.25rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    margin-bottom: 1.5rem !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+/* Remove the broad container styling that was affecting everything */
+/* This was the problem - too broad:
+div[data-testid="stVerticalBlock"] > div[style*="flex-direction: column"] > div {
+    ...
+}
+*/
+
+/* Optional: Style metric containers if you have st.metric */
+div[data-testid="stMetric"] {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Datasets
 eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
 eur_jobs = pd.read_csv(eur_jobs_path)
+contents_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/extractions.csv'
+content = pd.read_csv(contents_path)
 
 # Sidebar
 st.sidebar.title("Navigation")
@@ -39,12 +75,12 @@ if page == "Home":
     show_home_page()
 
 # ---- Overview ----
-if page == "Overview":
+elif page == "Overview":  # Fix: use elif instead of if
     show_overview_page()
 
 # ---- Education & Languages ----
 elif page == "Education & Languages":
-    show_education_language_page(eur_jobs)
+    show_education_language_page(content)
 
 # ---- Skills ----
 elif page == "Skills":

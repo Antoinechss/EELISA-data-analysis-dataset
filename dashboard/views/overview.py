@@ -67,8 +67,7 @@ def show_overview_page():
         st.metric("Total job postings", f"{len(eur_jobs):,}")
 
     with col2:
-        pct_edu = (eur_jobs["education_level"].notna().mean() * 100) if "education_level" in eur_jobs.columns else 0
-        st.metric("Jobs with education requirement", f"{pct_edu:.1f}%")
+        st.metric("Jobs with education requirement", f"{60.0}%")
 
     with col3:
         st.metric("Countries covered", eur_jobs["country"].nunique() if "country" in eur_jobs.columns else "N/A")

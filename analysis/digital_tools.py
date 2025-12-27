@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import re
 from collections import Counter
 from itertools import chain
+from dashboard.style import show_chart_with_card
 
 # =======================
 # COLOR PALETTE
@@ -116,75 +117,75 @@ def extract_tech_tools(text):
 # STREAMLIT PAGE
 # =======================
 
-def show_digital_tools_page(df):
+def display_tools_analysis(df):
 
     st.title("Digital Tools Analysis")
     st.caption("Context-aware extraction of technical tools from job descriptions")
 
-    df["tech_tools"] = df["full_description"].apply(extract_tech_tools)
-    df["filtered_tools"] = df["tech_tools"].apply(lambda d: list(d.keys()))
+    col1, col2 = st.columns([3, 2])
+    with col1: 
+        df["tech_tools"] = df["full_description"].apply(extract_tech_tools)
+        df["filtered_tools"] = df["tech_tools"].apply(lambda d: list(d.keys()))
 
-    tool_counts = Counter(chain.from_iterable(df["filtered_tools"]))
+        tool_counts = Counter(chain.from_iterable(df["filtered_tools"]))
 
-    if not tool_counts:
-        st.warning("No tools detected.")
-        return
+        if not tool_counts:
+            st.warning("No tools detected.")
+            return
 
-    top_tools = tool_counts.most_common(30)
-    treemap_df = pd.DataFrame(top_tools, columns=["tool", "count"])
+        top_tools = tool_counts.most_common(30)
+        treemap_df = pd.DataFrame(top_tools, columns=["tool", "count"])
 
-    # =======================
-    # TREEMAP
-    # =======================
+        # =======================
+        # TREEMAP
+        # =======================
 
-    fig = go.Figure(go.Treemap(
-        labels=[f"{t}<br>{c} jobs" for t, c in top_tools],
-        values=treemap_df["count"],
-        parents=[""] * len(treemap_df),
-        root=dict(color="white"),
-        marker=dict(
-            colors=treemap_df["count"],
-            colorscale=CUSTOM_CONTINUOUS_SCALE,
-            line=dict(width=2, color="white"),
-            showscale=True
+        fig = go.Figure(go.Treemap(
+            labels=[f"{t}<br>{c} jobs" for t, c in top_tools],
+            values=treemap_df["count"],
+            parents=[""] * len(treemap_df),
+            root=dict(color="white"),
+            marker=dict(
+                colors=treemap_df["count"],
+                colorscale=CUSTOM_CONTINUOUS_SCALE,
+                line=dict(width=2, color="white"),
+                showscale=False
+            )
+        ))
+
+        fig.update_layout(
+            title="Top 30 Technical Tools by Mentions",
+            height=600,
+            paper_bgcolor="white",
+            font=dict(color='black', size=14),
+            title_font=dict(color='black', size=20),
+            margin=dict(t=60, l=20, r=20, b=20)
         )
-    ))
 
-    fig.update_layout(
-        title="Top 30 Technical Tools by Mentions",
-        height=600,
-        paper_bgcolor="white",
-        font=dict(color=SECONDARY, size=14),
-        title_font=dict(color=SECONDARY, size=20),
-        margin=dict(t=60, l=20, r=20, b=20)
-    )
-
-    st.plotly_chart(fig, use_container_width=True, theme=None)
-    st.markdown("---")
+        show_chart_with_card(fig)
 
     # =======================
     # CATEGORY BAR CHART
     # =======================
+    with col2:
+        category_counts = {
+            cat: sum(tool_counts.get(t, 0) for t in tools)
+            for cat, tools in CATEGORIES.items()
+        }
 
-    category_counts = {
-        cat: sum(tool_counts.get(t, 0) for t in tools)
-        for cat, tools in CATEGORIES.items()
-    }
+        fig_cat = px.bar(
+            x=list(category_counts.keys()),
+            y=list(category_counts.values()),
+            labels={"x": "Category", "y": "Mentions"},
+            title="Tool Mentions by Category",
+            color_discrete_sequence=[PRIMARY]
+        )
 
-    fig_cat = px.bar(
-        x=list(category_counts.keys()),
-        y=list(category_counts.values()),
-        labels={"x": "Category", "y": "Mentions"},
-        title="Tool Mentions by Category",
-        color_discrete_sequence=[PRIMARY]
-    )
-
-    fig_cat.update_layout(
-        template="plotly_white",
-        paper_bgcolor="white",
-        font=dict(color=SECONDARY),
-        title_font=dict(color=SECONDARY, size=18),
-        xaxis_tickangle=-30
-    )
-
-    st.plotly_chart(fig_cat, use_container_width=True, theme=None)
+        fig_cat.update_layout(
+            template="plotly_white",
+            paper_bgcolor="white",
+            font=dict(color="black"),
+            title_font=dict(color="black", size=18),
+            xaxis_tickangle=-30
+        )
+        show_chart_with_card(fig_cat)
