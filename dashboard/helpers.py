@@ -1,4 +1,6 @@
 import json 
+import ast
+import pandas as pd
 
 def restore_list_json(x):
     if isinstance(x, list):
@@ -9,10 +11,6 @@ def restore_list_json(x):
         except Exception:
             return []
     return []
-
-import ast
-import json
-import pandas as pd
 
 def restore_list_safe(x):
     if isinstance(x, list):
@@ -36,3 +34,8 @@ def restore_list_safe(x):
             return []
 
     return []
+
+def normalize(s):
+    if not isinstance(s, str):
+        return s
+    return s.strip().lower()

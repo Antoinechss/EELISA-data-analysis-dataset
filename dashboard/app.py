@@ -14,7 +14,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# More targeted CSS - only style charts, not all elements
+# Simple, clean CSS that just works
 st.markdown("""
 <style>
 /* Set page background */
@@ -22,7 +22,7 @@ st.markdown("""
     background-color: #f8f9fa;
 }
 
-/* ONLY target plotly chart containers - be very specific */
+/* Simple card styling for charts only */
 div[data-testid="stPlotlyChart"] {
     background-color: white !important;
     padding: 1.25rem !important;
@@ -30,21 +30,6 @@ div[data-testid="stPlotlyChart"] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     margin-bottom: 1.5rem !important;
     border: 1px solid #e5e7eb !important;
-}
-
-/* Remove the broad container styling that was affecting everything */
-/* This was the problem - too broad:
-div[data-testid="stVerticalBlock"] > div[style*="flex-direction: column"] > div {
-    ...
-}
-*/
-
-/* Optional: Style metric containers if you have st.metric */
-div[data-testid="stMetric"] {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 </style>
 """, unsafe_allow_html=True)
@@ -75,7 +60,7 @@ if page == "Home":
     show_home_page()
 
 # ---- Overview ----
-elif page == "Overview":  # Fix: use elif instead of if
+elif page == "Overview":
     show_overview_page()
 
 # ---- Education & Languages ----
@@ -84,7 +69,7 @@ elif page == "Education & Languages":
 
 # ---- Skills ----
 elif page == "Skills":
-    show_skills_page(eur_jobs)
+    show_skills_page()
 
 # ---- GreenComp ----
 elif page == "GreenComp":

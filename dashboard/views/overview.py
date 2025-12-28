@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 from PIL import Image
+from dashboard.style import show_chart_with_card
 
 eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
 eur_jobs = pd.read_csv(eur_jobs_path)
@@ -17,6 +18,40 @@ EELISA_COUNTRIES = [
     "Turkey",
     "Romania"
 ]
+
+# ISO-2 to ISO-3 conversion mapping
+ISO2_TO_ISO3 = {
+    "be": "BEL",
+    "bg": "BGR",
+    "cz": "CZE",
+    "dk": "DNK",
+    "de": "DEU",
+    "ee": "EST",
+    "ie": "IRL",
+    "el": "GRC",
+    "gr": "GRC",
+    "es": "ESP",
+    "fr": "FRA",
+    "hr": "HRV",
+    "it": "ITA",
+    "cy": "CYP",
+    "lv": "LVA",
+    "lt": "LTU",
+    "lu": "LUX",
+    "hu": "HUN",
+    "mt": "MLT",
+    "nl": "NLD",
+    "at": "AUT",
+    "pl": "POL",
+    "pt": "PRT",
+    "ro": "ROU",
+    "si": "SVN",
+    "sk": "SVK",
+    "fi": "FIN",
+    "se": "SWE",
+    "no": "NOR",
+    "ch": "CHE",
+}
 
 def show_overview_page():
     """Display the Job Offers Dataset page"""
@@ -44,7 +79,7 @@ def show_overview_page():
     job requirements. The dataset should therefore be interpreted as a proxy for labour market demand rather than as a 
     comprehensive representat ion of employment structures.
 
-    This overview section describes the dataset’s scope, structure, and key variables, and provides essential context for the 
+    This overview section describes the dataset's scope, structure, and key variables, and provides essential context for the 
     subsequent analytical sections of the dashboard.
     """)
 
@@ -117,10 +152,10 @@ def show_overview_page():
             xaxis_tickangle=-45,
             showlegend=False,
             font=dict(color="#1F2933"),
-            margin=dict(t=60, l=30, r=20, b=80)
+            margin=dict(t=60, l=30, r=20, b=120)
         )
 
-        st.plotly_chart(fig, use_container_width=True, theme=None)
+        show_chart_with_card(fig)
 
     # -----------------------
     # JOBS BY ISCO-3 FIELD
@@ -153,8 +188,9 @@ def show_overview_page():
         )
 
         fig_isco.update_layout(
+            height = 600,
             yaxis=dict(autorange="reversed"),  # largest on top
-            margin=dict(t=60, l=40, r=20, b=40),
+            margin=dict(t=60, l=40, r=20, b=90),
             font=dict(color="#1F2933")
         )
 
@@ -163,6 +199,66 @@ def show_overview_page():
                         "Jobs: %{x:,}<br>" +
                         "<extra></extra>"
         )
+        show_chart_with_card(fig_isco)
 
-        st.plotly_chart(fig_isco, use_container_width=True, theme=None)
+    # ----------------------------
+    # ISCO × Country Chloropleth map 
+    # ----------------------------
+    col1, col2 = st.columns(2)
+    with col1: 
+        df = eur_jobs.copy()
 
+        df = df[
+            df["country_code"].notna() &
+            df["isco_3_digit_label"].notna()
+        ]
+
+        # ISCO selector
+        isco_options = (
+            df["isco_3_digit_label"]
+            .value_counts()
+            .index
+            .tolist()
+        )
+
+        selected_isco = st.selectbox(
+            "Select an ISCO-3 occupation:",
+            isco_options
+        )
+
+        df_isco = df[df["isco_3_digit_label"] == selected_isco]
+
+        country_counts = (
+            df_isco
+            .groupby("country_code")
+            .size()
+            .reset_index(name="job_count")
+        )
+
+        # Convert ISO-2 to ISO-3 codes
+        country_counts["country_code_iso3"] = country_counts["country_code"].str.lower().map(ISO2_TO_ISO3)
+        
+        # Filter out any unmapped codes
+        country_counts = country_counts[country_counts["country_code_iso3"].notna()]
+
+        fig = px.choropleth(
+            country_counts,
+            locations="country_code_iso3",  # Use ISO-3 codes
+            color="job_count",
+            locationmode="ISO-3",  # Changed from ISO-2 to ISO-3
+            scope="europe",
+            color_continuous_scale="Blues",
+            labels={"job_count": "Number of job postings"},
+            title=f"Geographic Distribution of {selected_isco}"
+        )
+        fig.update_layout(
+            height=600,
+            margin=dict(t=60, l=20, r=20, b=20),
+            font=dict(color="#1F2933"),
+            coloraxis_showscale=False,  
+            paper_bgcolor="rgba(0,0,0,0)"
+        )
+
+        show_chart_with_card(fig)
+    with col2: 
+        pass

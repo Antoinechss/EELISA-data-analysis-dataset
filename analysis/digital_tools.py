@@ -122,7 +122,7 @@ def display_tools_analysis(df):
     st.title("Digital Tools Analysis")
     st.caption("Context-aware extraction of technical tools from job descriptions")
 
-    col1, col2 = st.columns([3, 2])
+    col1, col2 = st.columns([4, 2])
     with col1: 
         df["tech_tools"] = df["full_description"].apply(extract_tech_tools)
         df["filtered_tools"] = df["tech_tools"].apply(lambda d: list(d.keys()))
@@ -159,7 +159,7 @@ def display_tools_analysis(df):
             paper_bgcolor="white",
             font=dict(color='black', size=14),
             title_font=dict(color='black', size=20),
-            margin=dict(t=60, l=20, r=20, b=20)
+            margin=dict(t=60, l=20, r=20, b=90)
         )
 
         show_chart_with_card(fig)
@@ -186,6 +186,7 @@ def display_tools_analysis(df):
             paper_bgcolor="white",
             font=dict(color="black"),
             title_font=dict(color="black", size=18),
-            xaxis_tickangle=-30
+            xaxis_tickangle=-30,
+            margin=dict(t=60, l=20, r=20, b=150)
         )
         show_chart_with_card(fig_cat)

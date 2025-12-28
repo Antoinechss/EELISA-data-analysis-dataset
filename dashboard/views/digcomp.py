@@ -53,7 +53,7 @@ def show_digcomp_page(df):
     
     st.markdown("---")
 
-    col1, col2, col3 = st.columns([3, 2, 2])
+    col1, col2 = st.columns([3, 2])
 
     # ---------------
     # Radar Chart of DigComp competences
@@ -132,7 +132,7 @@ def show_digcomp_page(df):
                         ),
                         showlegend=False,
                         font=dict(color="#1F2933"),
-                        margin=dict(t=60, l=40, r=40, b=40),
+                        margin=dict(t=60, l=40, r=40, b=90),
                         paper_bgcolor="rgba(0,0,0,0)",
                         plot_bgcolor="rgba(0,0,0,0)"
                     )
@@ -166,9 +166,6 @@ def show_digcomp_page(df):
             font=dict(color="#1F2933")
         )
         show_chart_with_card(fig_metric, height=170)
-        
-    with col3:
-        pass
 
     # Display digital tools analysis
     display_tools_analysis(eur_jobs)
