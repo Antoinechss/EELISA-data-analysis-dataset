@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+.env
+.DS_Store
+.git/
+.gitignore
+.vscode/
+.streamlit/secrets.toml
+*.log
+.pytest_cache/

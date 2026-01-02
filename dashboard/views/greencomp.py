@@ -1,12 +1,14 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+import plotly.express as px
 from greencomp import GREENCOMP_FRAMEWORK
 from dashboard.helpers import restore_list_safe
 from dashboard.style import show_chart_with_card
 import plotly.graph_objects as go
+from dashboard.utils import get_dataset_path, get_static_path
 
-path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/extractions.csv'
-base_df = pd.read_csv(path)
+base_df = pd.read_csv(get_dataset_path('extractions.csv'))
 
 def show_greencomp_page(df):
 
@@ -16,7 +18,7 @@ def show_greencomp_page(df):
         st.caption("4 domains & 12 competences to assess environmental abilities")
     with col2:
         try:
-            with open('/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/GreenComp.pdf', "rb") as pdf_file:
+            with open(get_static_path('GreenComp.pdf'), "rb") as pdf_file:
                 pdf_bytes = pdf_file.read()
                 st.download_button(
                     label="📄 Read Official Documentation",
@@ -45,7 +47,7 @@ def show_greencomp_page(df):
 
     st.markdown("---")
 
-    col1, col2, col3 = st.columns([3, 2, 2])
+    col1, col2 = st.columns([4, 2])
 
     # ---------------
     # Radar Chart of DigComp competences
@@ -122,14 +124,76 @@ def show_greencomp_page(df):
                         ),
                         showlegend=False,
                         font=dict(color="#1F2933"),
-                        margin=dict(t=60, l=40, r=40, b=40),
+                        margin=dict(t=60, l=40, r=40, b=90),
                         paper_bgcolor="rgba(0,0,0,0)",
                         plot_bgcolor="rgba(0,0,0,0)"
                     )
 
                     show_chart_with_card(fig, height=None)
     with col2:
-        pass
-    with col3:
-        pass
+        green_df = base_df.copy()
+        green_df["green_competences"] = green_df["green_competences"].apply(restore_list_safe)
+        green_df["green_competences"] = green_df["green_competences"].apply(
+            lambda x: x if isinstance(x, list) else []
+        )
+        green_df["green_distinct_count"] = green_df["green_competences"].apply(
+            lambda x: len(set(x))
+        )
+        green_df["green_total_mentions"] = green_df["green_competences"].apply(len)
+        green_df["green_integration_index"] = (
+            green_df["green_distinct_count"]
+            * np.log(green_df["green_total_mentions"] + 1)
+        )
+        fig_dist = px.histogram(
+            green_df,
+            x="green_integration_index",
+            nbins=40,
+            title="Distribution of GreenComp Integration Index",
+            labels={"green_integration_index": "GreenComp integration score"},
+            template="plotly_white",
+            color_discrete_sequence=["#3B6C8E"]
+        )
+
+        fig_dist.update_layout(
+            bargap=0.05,
+            margin=dict(t=60, l=40, r=40, b=90),
+            font=dict(color="#1F2933")
+        )
+        show_chart_with_card(fig_dist)
+
+    isco_green = (
+        green_df
+        .groupby("isco_3_label")
+        .agg(
+            avg_green_index=("green_integration_index", "mean"),
+            job_count=("job_id", "nunique")
+        )
+        .reset_index()
+    )
+    isco_green = isco_green[isco_green["job_count"] >= 30]
+    isco_green = isco_green.sort_values("avg_green_index", ascending=False)
+    fig_isco = px.bar(
+        isco_green,
+        x="avg_green_index",
+        y="isco_3_label",
+        orientation="h",
+        title="Average GreenComp Integration Index by ISCO-3 Occupation",
+        labels={
+            "avg_green_index": "Average GreenComp integration score",
+            "isco_3_label": "ISCO-3 occupation"
+        },
+        template="plotly_white",
+        color="avg_green_index",
+        color_continuous_scale="Blues"
+    )
+
+    fig_isco.update_layout(
+        yaxis=dict(autorange="reversed"),
+        margin=dict(t=60, l=40, r=40, b=90),
+        font=dict(color="#1F2933"),
+        coloraxis_showscale=False
+    )
+    show_chart_with_card(fig_isco)
+
+
 

@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from dashboard.utils import get_dataset_path
 from dashboard.views.overview import show_overview_page
 from dashboard.views.edu_lang import show_education_language_page
 from dashboard.views.skills import show_skills_page
@@ -34,11 +35,9 @@ div[data-testid="stPlotlyChart"] {
 </style>
 """, unsafe_allow_html=True)
 
-# Datasets
-eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
-eur_jobs = pd.read_csv(eur_jobs_path)
-contents_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/extractions.csv'
-content = pd.read_csv(contents_path)
+# Datasets with relative paths
+eur_jobs = pd.read_csv(get_dataset_path('european_jobs.csv'))
+content = pd.read_csv(get_dataset_path('extractions.csv'))
 
 # Sidebar
 st.sidebar.title("Navigation")

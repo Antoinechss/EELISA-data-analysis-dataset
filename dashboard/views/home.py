@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+from dashboard.utils import get_static_path
 
 def show_home_page():
 
@@ -10,9 +11,7 @@ def show_home_page():
 
     with col1:
         try:
-            eelisa_logo = Image.open(
-                "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/eelisa_logo.png"
-            )
+            eelisa_logo = Image.open(get_static_path('eelisa_logo.png'))
             st.image(eelisa_logo, width=140)
         except:
             st.write("EELISA")
@@ -36,9 +35,7 @@ def show_home_page():
 
     with col3:
         try:
-            pep_logo = Image.open(
-                "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/PEP_logo.png"
-            )
+            pep_logo = Image.open(get_static_path('PEP_logo.png'))
             st.image(pep_logo, width=140)
         except:
             st.write("PEP")

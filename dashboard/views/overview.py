@@ -3,11 +3,10 @@ import plotly.express as px
 import pandas as pd
 from PIL import Image
 from dashboard.style import show_chart_with_card
+from dashboard.utils import get_dataset_path
 
-eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
-eur_jobs = pd.read_csv(eur_jobs_path)
-presentatio_dataset_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/overview_dataset.csv'
-presentatio_dataset = pd.read_csv(presentatio_dataset_path)
+eur_jobs = pd.read_csv(get_dataset_path('european_jobs.csv'))
+presentatio_dataset = pd.read_csv(get_dataset_path('overview_dataset.csv'))
 
 EELISA_COUNTRIES = [
     "France",

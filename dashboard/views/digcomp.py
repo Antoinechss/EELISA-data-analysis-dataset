@@ -5,12 +5,11 @@ from dashboard.helpers import restore_list_safe
 from dashboard.style import show_chart_with_card
 from analysis.digital_tools import display_tools_analysis
 import plotly.graph_objects as go
+from dashboard.utils import get_dataset_path, get_static_path
 
 # Load datasets
-eur_jobs_path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/european_jobs.csv'
-eur_jobs = pd.read_csv(eur_jobs_path)
-path = '/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/extractions.csv'
-base_df = pd.read_csv(path)
+eur_jobs = pd.read_csv(get_dataset_path('european_jobs.csv'))
+base_df = pd.read_csv(get_dataset_path('extractions.csv'))
 
 def show_digcomp_page(df):
         
@@ -21,7 +20,7 @@ def show_digcomp_page(df):
         st.caption("5 domains & 21 competences to assess digital abilities")
     with col2:
         try:
-            with open('/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/dashboard/static/DigComp.pdf', "rb") as pdf_file:
+            with open(get_static_path('DigComp.pdf'), "rb") as pdf_file:
                 pdf_bytes = pdf_file.read()
                 st.download_button(
                     label="📄 Read Official Documentation",

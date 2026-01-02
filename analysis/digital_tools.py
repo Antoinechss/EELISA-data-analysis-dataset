@@ -155,11 +155,11 @@ def display_tools_analysis(df):
 
         fig.update_layout(
             title="Top 30 Technical Tools by Mentions",
-            height=600,
+            height=700,  # Increase height from 600 to 700
             paper_bgcolor="white",
-            font=dict(color='black', size=14),
-            title_font=dict(color='black', size=20),
-            margin=dict(t=60, l=20, r=20, b=90)
+            font=dict(color='black', size=12),  # Reduce font size from 14 to 12
+            title_font=dict(color='black', size=18),  # Reduce title size from 20 to 18
+            margin=dict(t=80, l=40, r=40, b=40)  # Increase all margins
         )
 
         show_chart_with_card(fig)

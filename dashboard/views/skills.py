@@ -8,8 +8,9 @@ from collections import Counter
 import plotly.express as px
 from dashboard.helpers import restore_list_safe, normalize
 from dashboard.style import show_chart_with_card
+from dashboard.utils import get_dataset_path
 
-df = pd.read_csv('/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis/datasets/extractions.csv')
+df = pd.read_csv(get_dataset_path('extractions.csv'))
 
 SKILL_COLOR_PALETTE = {
     "Hard": "#3B6C8E",
