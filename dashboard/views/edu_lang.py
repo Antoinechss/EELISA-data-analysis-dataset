@@ -2,8 +2,16 @@ import streamlit as st
 import pandas as pd
 import json
 import ast
+import sys
+import os
 import plotly.express as px
 import plotly.graph_objects as go
+
+# Add project root to Python path for deployment
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from dashboard.style import show_chart_with_card
 from dashboard.helpers import restore_list_json
 

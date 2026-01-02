@@ -38,21 +38,34 @@
 ./setup.sh && ./run_dashboard.sh
 ```
 
-### Option 2: Docker Deployment
+### Option 2: Cloud Platform Deployment
+```bash
+# Entry point: main.py (recommended)
+# Alternative: dashboard/app.py
+```
+
+### Option 3: Docker Deployment
 ```bash
 docker build -t eelisa-dashboard .
 docker run -p 8501:8501 eelisa-dashboard
 ```
 
-### Option 3: Cloud Platform
-- Entry point: `streamlit run dashboard/app.py`
-- Python version: 3.11+
-- Requirements: requirements.txt
+## Deployment Fixes Applied
+
+### Import Structure Updated
+- **Added dynamic path setup**: Each module now adds project root to sys.path
+- **Fixed cloud deployment issues**: Import errors resolved for Streamlit Cloud
+- **Created main.py entry point**: Alternative entry point for problematic platforms
+
+### Configuration Updates
+- **Removed deprecated config**: Fixed "dataFrameSerialization" warning
+- **Streamlined Streamlit config**: Production-ready settings only
 
 ## Testing Status
 - ✅ Path utilities working correctly
 - ✅ All datasets and static files found
 - ✅ Import structure functional
+- ✅ Cloud deployment import issues resolved
 - ✅ Ready for deployment
 
 ## Notes for Future Development

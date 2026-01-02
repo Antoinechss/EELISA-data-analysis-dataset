@@ -1,6 +1,15 @@
 import streamlit as st
+import sys
+import os
 from PIL import Image
+
+# Add project root to Python path for deployment
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from dashboard.utils import get_static_path
+
 
 def show_home_page():
 

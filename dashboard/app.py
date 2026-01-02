@@ -1,5 +1,13 @@
 import streamlit as st
 import pandas as pd
+import sys
+import os
+
+# Add project root to Python path for deployment
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from dashboard.utils import get_dataset_path
 from dashboard.views.overview import show_overview_page
 from dashboard.views.edu_lang import show_education_language_page

@@ -1,10 +1,18 @@
 import streamlit as st
 import pandas as pd
+import sys
+import os
+import plotly.graph_objects as go
+
+# Add project root to Python path for deployment
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from digcomp import DIGCOMP_FRAMEWORK
 from dashboard.helpers import restore_list_safe
 from dashboard.style import show_chart_with_card
 from analysis.digital_tools import display_tools_analysis
-import plotly.graph_objects as go
 from dashboard.utils import get_dataset_path, get_static_path
 
 # Load datasets
