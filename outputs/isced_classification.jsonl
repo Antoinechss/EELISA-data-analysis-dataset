@@ -251,3 +251,578 @@
 {"job_id": "CY47", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
 {"job_id": "CY48", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
 {"job_id": "CY49", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "CY50", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY51", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "CY52", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "CY53", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "CY54", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "CY55", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "CY56", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "CY57", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY58", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY59", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "CY60", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "CY61", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "CY62", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "CY63", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "CY64", "isced_broad_code": "052", "isced_broad_name": "Environment", "isced_narrow_code": "0521", "isced_narrow_name": "Environmental sciences"}
+{"job_id": "CY65", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "CY66", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY67", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY68", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY69", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "CY70", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY71", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY72", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY73", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY74", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "CY75", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY76", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "CY77", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY78", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY79", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY80", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY81", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "CY82", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY83", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY84", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY85", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY86", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "CY87", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY88", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY89", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "CY90", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY91", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY92", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY93", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY94", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "CY95", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "CY96", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "CY97", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "CY98", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "CY99", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "CY100", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY101", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "CY102", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "CY103", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY104", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "CY105", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "EE1", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE2", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE3", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE4", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "EE5", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE6", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE7", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "EE8", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "EE9", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE10", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE11", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "EE12", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE13", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "EE14", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "EE15", "isced_broad_code": "082", "isced_broad_name": "Forestry", "isced_narrow_code": "0821", "isced_narrow_name": "Forestry"}
+{"job_id": "EE16", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE17", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE18", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "EE19", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "EE20", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE21", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "EE22", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE23", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE24", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE25", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "EE26", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE27", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "EE28", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE29", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "EE30", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "EE31", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "EE32", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "EE33", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "EE34", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE35", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE36", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE37", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE38", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "EE39", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "EE40", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE41", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "EE42", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "EE43", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "EE44", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "EE45", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "EE46", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE47", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE48", "isced_broad_code": "081", "isced_broad_name": "Agriculture", "isced_narrow_code": "0811", "isced_narrow_name": "Crop and livestock production"}
+{"job_id": "EE49", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "EE50", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "EE51", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE52", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE53", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE54", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE55", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "EE56", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE57", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE58", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE59", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE60", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE61", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "EE62", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE63", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "EE64", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "EE65", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE66", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "EE67", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE68", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE69", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE70", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE71", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE72", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE73", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "EE74", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE75", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE76", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE77", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE78", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE79", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE80", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE81", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE82", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "EE83", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "EE84", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "EE85", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU1", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU2", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "HU3", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU4", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU5", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "HU6", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU7", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU8", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU9", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "HU10", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU11", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU12", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU13", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0711", "isced_narrow_name": "Chemical engineering and processes"}
+{"job_id": "HU14", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "HU15", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "HU16", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU17", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU18", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "HU19", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0731", "isced_narrow_name": "Architecture and town planning"}
+{"job_id": "HU20", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU21", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU22", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU23", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU24", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU25", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU26", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU27", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU28", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU29", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "HU30", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU31", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "HU32", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "HU33", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "HU34", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU35", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "HU36", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "HU37", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0723", "isced_narrow_name": "Textiles (clothes footwear and leather)"}
+{"job_id": "HU38", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0723", "isced_narrow_name": "Textiles (clothes footwear and leather)"}
+{"job_id": "HU39", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "HU40", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "HU41", "isced_broad_code": "081", "isced_broad_name": "Agriculture", "isced_narrow_code": "0811", "isced_narrow_name": "Crop and livestock production"}
+{"job_id": "HU42", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "HU43", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "HU44", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "HU45", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV1", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0512", "isced_narrow_name": "Biochemistry"}
+{"job_id": "LV2", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV3", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV4", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV5", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV6", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV7", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV8", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV9", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV10", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV11", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV12", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV13", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV14", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV15", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV16", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV17", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV18", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV19", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV20", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV21", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV22", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV23", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV24", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV25", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV26", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV27", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV28", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV29", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV30", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV31", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV32", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV33", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV34", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV35", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV36", "isced_broad_code": "082", "isced_broad_name": "Forestry", "isced_narrow_code": "0821", "isced_narrow_name": "Forestry"}
+{"job_id": "LV37", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV38", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV39", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV40", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV41", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV42", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV43", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV44", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV45", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV46", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV47", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV48", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV49", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV50", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV51", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV52", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0612", "isced_narrow_name": "Database and network design and administration"}
+{"job_id": "LV53", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV54", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV55", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV56", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV57", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV58", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV59", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV60", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV61", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV62", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV63", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV64", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV65", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV66", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0612", "isced_narrow_name": "Database and network design and administration"}
+{"job_id": "LV67", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV68", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV69", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV70", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV71", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV72", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV73", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV74", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV75", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0711", "isced_narrow_name": "Chemical engineering and processes"}
+{"job_id": "LV76", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV77", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV78", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV79", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV80", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV81", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LV82", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LV83", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV84", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV85", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV86", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV87", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV88", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV89", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV90", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV91", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV92", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV93", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV94", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV95", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "LV96", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV97", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0512", "isced_narrow_name": "Biochemistry"}
+{"job_id": "LV98", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "LV99", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV100", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV101", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV102", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV103", "isced_broad_code": "052", "isced_broad_name": "Environment", "isced_narrow_code": "0521", "isced_narrow_name": "Environmental sciences"}
+{"job_id": "LV104", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV105", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV106", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV107", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV108", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV109", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV110", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV111", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV112", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV113", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV114", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV115", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV116", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV117", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV118", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV119", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV120", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV121", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV122", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV123", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV124", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "LV125", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV126", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0711", "isced_narrow_name": "Chemical engineering and processes"}
+{"job_id": "LV127", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV128", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV129", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LV130", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV131", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LV132", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV133", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV134", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV135", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV136", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "LV137", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0711", "isced_narrow_name": "Chemical engineering and processes"}
+{"job_id": "LV138", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "LV139", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV140", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV141", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LV142", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV143", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV144", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV145", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV146", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV147", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LV148", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "LV149", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV150", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV151", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV152", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV153", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV154", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "LV155", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "LV156", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV157", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LV158", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LV159", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LV160", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LV161", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LV162", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LV163", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LV164", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV165", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV166", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV167", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LV168", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LV169", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT1", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LT2", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT3", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT4", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT5", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT6", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT7", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT8", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT9", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT10", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "LT11", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "LT12", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT13", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT14", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT15", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT16", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT17", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT18", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LT19", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0711", "isced_narrow_name": "Chemical engineering and processes"}
+{"job_id": "LT20", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "LT21", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LT22", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT23", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT24", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT25", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT26", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT27", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT28", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT29", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT30", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT31", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT32", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT33", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT34", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT35", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT36", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT37", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LT38", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LT39", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "LT40", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LT41", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0612", "isced_narrow_name": "Database and network design and administration"}
+{"job_id": "LT42", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LT43", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT44", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT45", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LT46", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LT47", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LT48", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "LT49", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LT50", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LT51", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LT52", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT53", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "LT54", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "LT55", "isced_broad_code": "053", "isced_broad_name": "Physical sciences", "isced_narrow_code": "0531", "isced_narrow_name": "Chemistry"}
+{"job_id": "LT56", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT57", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "LT58", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT59", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT60", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT61", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT62", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT63", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT64", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT65", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "LT66", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "LT67", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT68", "isced_broad_code": "052", "isced_broad_name": "Environment", "isced_narrow_code": "0522", "isced_narrow_name": "Natural environments and wildlife"}
+{"job_id": "LT69", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "LT70", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LT71", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LT72", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT73", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT74", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT75", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT76", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT77", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT78", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "LT79", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT80", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0721", "isced_narrow_name": "Food processing"}
+{"job_id": "LT81", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT82", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT83", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT84", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT85", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "LT86", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LT87", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LT88", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LT89", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "LT90", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL1", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL2", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL3", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL4", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL5", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL6", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL7", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL8", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL9", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL10", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL11", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0612", "isced_narrow_name": "Database and network design and administration"}
+{"job_id": "PL12", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL13", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL14", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "PL15", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL16", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "PL17", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL18", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL19", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL20", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL21", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "PL22", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL23", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL24", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL25", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL26", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL27", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL28", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL29", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0724", "isced_narrow_name": "Mining and extraction"}
+{"job_id": "PL30", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL31", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL32", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL33", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL34", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL35", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL36", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL37", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL38", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL39", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL40", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL41", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL42", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL43", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL44", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL45", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL46", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL47", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL48", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL49", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL50", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL51", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL52", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL53", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL54", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL55", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL56", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL57", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL58", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "PL59", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL60", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "PL61", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL62", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL63", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0713", "isced_narrow_name": "Electricity and energy"}
+{"job_id": "PL64", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL65", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL66", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL67", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL68", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL69", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL70", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL71", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL72", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL73", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL74", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "PL75", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL76", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "PL77", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL78", "isced_broad_code": "072", "isced_broad_name": "Manufacturing and processing", "isced_narrow_code": "0722", "isced_narrow_name": "Materials (glass paper plastic and wood)"}
+{"job_id": "PL79", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL80", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0612", "isced_narrow_name": "Database and network design and administration"}
+{"job_id": "PL81", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL82", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL83", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "PL84", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL85", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL86", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL87", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "PL88", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "PL89", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL90", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "PL91", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL92", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL93", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL94", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "PL95", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0714", "isced_narrow_name": "Electronics and automation"}
+{"job_id": "PL96", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "PL97", "isced_broad_code": "052", "isced_broad_name": "Environment", "isced_narrow_code": "0521", "isced_narrow_name": "Environmental sciences"}
+{"job_id": "PL98", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "PL99", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL100", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0712", "isced_narrow_name": "Environmental protection technology"}
+{"job_id": "PL101", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0715", "isced_narrow_name": "Mechanics and metal trades"}
+{"job_id": "PL102", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL103", "isced_broad_code": "081", "isced_broad_name": "Agriculture", "isced_narrow_code": "0811", "isced_narrow_name": "Crop and livestock production"}
+{"job_id": "PL104", "isced_broad_code": "071", "isced_broad_name": "Engineering and engineering trades", "isced_narrow_code": "0716", "isced_narrow_name": "Motor vehicles ships and aircraft"}
+{"job_id": "PL105", "isced_broad_code": "073", "isced_broad_name": "Architecture and construction", "isced_narrow_code": "0732", "isced_narrow_name": "Building and civil engineering"}
+{"job_id": "PL106", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "PL107", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0611", "isced_narrow_name": "Computer use"}
+{"job_id": "PL108", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL109", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "PL110", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL111", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "PL112", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "PL113", "isced_broad_code": "104", "isced_broad_name": "Transport services", "isced_narrow_code": "1041", "isced_narrow_name": "Transport services"}
+{"job_id": "PL114", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL115", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL116", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL117", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0613", "isced_narrow_name": "Software and applications development and analysis"}
+{"job_id": "PL118", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL119", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL120", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL121", "isced_broad_code": "061", "isced_broad_name": "Information and Communication Technologies", "isced_narrow_code": "0612", "isced_narrow_name": "Database and network design and administration"}
+{"job_id": "PL122", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL123", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL124", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL125", "isced_broad_code": null, "isced_broad_name": null, "isced_narrow_code": null, "isced_narrow_name": null}
+{"job_id": "PL126", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "PL127", "isced_broad_code": "052", "isced_broad_name": "Environment", "isced_narrow_code": "0521", "isced_narrow_name": "Environmental sciences"}
+{"job_id": "PL128", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "PL129", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}
+{"job_id": "PL130", "isced_broad_code": "051", "isced_broad_name": "Biological and related sciences", "isced_narrow_code": "0511", "isced_narrow_name": "Biology"}

@@ -6,6 +6,8 @@ import sys
 import os
 import plotly.express as px
 import plotly.graph_objects as go
+from dashboard.utils import get_dataset_path, get_static_path
+
 
 # Add project root to Python path for deployment
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -382,7 +384,43 @@ def render_language_section(base_df: pd.DataFrame):
     show_chart_with_card(fig_lang)
 
 def render_ISCED_section(base_df: pd.DataFrame):
-    st.header("ISCED Field Classification Analysis")
+    col1, col2 = st.columns([4, 1])
+    with col1:
+        st.subheader("ISCED Field Classification Analysis")
+    with col2:
+        try:
+            # Use the correct path to the ISCED PDF
+            isced_path = os.path.join(
+                os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                "processing", "education_classification", "ISCED_official.pdf"
+            )
+            
+            with open(isced_path, "rb") as pdf_file:
+                pdf_bytes = pdf_file.read()
+                st.download_button(
+                    label="📄 Read Official ISCED Classification",
+                    data=pdf_bytes,
+                    file_name="ISCED_official.pdf",
+                    mime="application/pdf"
+                )
+        except FileNotFoundError:
+            st.warning("📄 Official documentation not found")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        # ISCED Field × ISCO Domain Matrix
+        st.info("ISCED Field × ISCO Domain Matrix coming... Heatmap")
+        st.markdown("---")
+        # Education Level Distribution
+        st.info("Education Level Distribution coming soon here... " \
+        "Ranked list or stacked proportions")
+    with col2:
+        # Geo map of ISCED requests
+        st.info("Geo map of ISCED requests (chloropeth) coming soon...")
+        st.markdown("---")
+        # Education Field × Sustainability (GreenComp Overlay)
+        st.info("Education Field × Sustainability (GreenComp Overlay) coming soon..." \
+        "which education fields are most exposed to the greencomp framework ? ")
 
 # -----------------
 # MAIN PAGE FUNCTION
