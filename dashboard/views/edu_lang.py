@@ -54,7 +54,7 @@ def normalize_education_level(x):
 # -----------------
 
 def render_education_section(base_df: pd.DataFrame):
-    st.subheader("Education Requirements")
+    st.subheader("Qualification Requirements")
 
     edu_df = base_df.copy()
 
@@ -231,8 +231,7 @@ def build_education_field_df(df: pd.DataFrame):
 
 
 def render_education_fields_section(base_df: pd.DataFrame):
-    """Render the education fields analysis section."""
-    st.subheader("Education Fields When Mentioned")
+    st.subheader("Qualification Domain When Mentioned")
     
     # Check if required columns exist
     required_cols = ["education_field_phd_clean", "education_field_master_clean"]
@@ -245,23 +244,19 @@ def render_education_fields_section(base_df: pd.DataFrame):
     if edu_field_df.empty:
         st.info("No education fields found in the dataset.")
         return
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        degree_choice = st.radio(
-            "Degree level",
-            ["PhD", "Master"],
-            horizontal=True,
-            key="edu_field_degree"
-        )
-
-    with col2:
-        agg_choice = st.selectbox(
-            "Aggregate by",
-            ["Overall", "ISCO-3 occupation"],
-            key="edu_field_agg"
-        )
+    
+    agg_choice = st.selectbox(
+        "Aggregate by",
+        ["Overall", "ISCO-3 occupation"],
+        key="edu_field_agg"
+    )
+    
+    degree_choice = st.radio(
+        "Degree level",
+        ["PhD", "Master"],
+        horizontal=True,
+        key="edu_field_degree"
+    )
 
     df_sel = edu_field_df[edu_field_df["degree"] == degree_choice].copy()
 
@@ -315,10 +310,6 @@ def render_education_fields_section(base_df: pd.DataFrame):
 
         for i, field in enumerate(top_fields.index, start=1):
             st.markdown(f"{i}. **{field}**")
-            
-    st.caption(
-        "Education fields explicitly mentioned in job postings."
-    )
 
 
 # -----------------
@@ -390,6 +381,8 @@ def render_language_section(base_df: pd.DataFrame):
     )
     show_chart_with_card(fig_lang)
 
+def render_ISCED_section(base_df: pd.DataFrame):
+    st.header("ISCED Field Classification Analysis")
 
 # -----------------
 # MAIN PAGE FUNCTION
@@ -401,17 +394,23 @@ def show_education_language_page(contents: pd.DataFrame, enhanced_jobs: pd.DataF
     st.title("Education & Languages Requirements")
     st.markdown("---")
     
-    # First row: Education levels and Languages
+    # Official ISCED Classification
+    render_ISCED_section(base_df)
+    st.markdown("---")
+
+    # Education qualifications requirements
     col1, col2 = st.columns(2, gap="large")
     with col1:
         render_education_section(base_df)
 
     with col2:
-        render_language_section(base_df)
+        if enhanced_jobs is not None:
+            render_education_fields_section(enhanced_jobs)
+        else:
+            render_education_fields_section(base_df)
     
-    # Second row: Education Fields (full width) - use enhanced dataset if available
+    # Language section
     st.markdown("---")
-    if enhanced_jobs is not None:
-        render_education_fields_section(enhanced_jobs)
-    else:
-        render_education_fields_section(base_df)
+    col1, col2 = st.columns([3, 2])
+    render_language_section(base_df)
+

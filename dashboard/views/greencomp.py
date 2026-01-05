@@ -139,15 +139,47 @@ def show_greencomp_page(df):
 
                     show_chart_with_card(fig, height=None)
     with col2:
+        # Calculate share of jobs mentioning GreenComp competences
         green_df = base_df.copy()
-        green_df["green_competences"] = green_df["green_competences"].apply(restore_list_safe)
+        
+        # Process green competences
+        green_df["green_competences"] = green_df["green_competences"].apply(
+            restore_list_safe
+        )
+        
+        # Check which jobs have at least one GreenComp competence
+        green_df["has_greencomp"] = green_df["green_competences"].apply(
+            lambda x: isinstance(x, list) and len(x) > 0 and any(
+                comp.strip() for comp in x
+            )
+        )
+        
+        # Calculate percentage
+        greencomp_share = green_df["has_greencomp"].mean() * 100
+        
+        # Create metric chart
+        fig_metric = go.Figure(go.Indicator(
+            mode="number",
+            value=greencomp_share,
+            number={"suffix": "%"},
+            title={"text": "Jobs Explicitly Mentioning GreenComp Competences"}
+        ))
+        fig_metric.update_layout(
+            margin=dict(t=35, l=20, r=20, b=15),
+            font=dict(color="#1F2933")
+        )
+        show_chart_with_card(fig_metric, height=170)
+
+        # Distribution of GreenComp Integration Index
         green_df["green_competences"] = green_df["green_competences"].apply(
             lambda x: x if isinstance(x, list) else []
         )
         green_df["green_distinct_count"] = green_df["green_competences"].apply(
             lambda x: len(set(x))
         )
-        green_df["green_total_mentions"] = green_df["green_competences"].apply(len)
+        green_df["green_total_mentions"] = green_df["green_competences"].apply(
+            len
+        )
         green_df["green_integration_index"] = (
             green_df["green_distinct_count"]
             * np.log(green_df["green_total_mentions"] + 1)

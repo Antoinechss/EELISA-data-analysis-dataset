@@ -3,41 +3,64 @@ import json
 import time
 import pandas as pd
 from openai import OpenAI
+from dotenv import load_dotenv
 
-MODEL_NAME = "gpt-4.1-mini"
+# Use absolute paths to avoid issues
+PROJECT_ROOT = "/Users/antoinechosson/Desktop/EELISA/EELISA-Data-analysis"
+
+MODEL_NAME = "gpt-4o-mini"  # Fixed model name
 SLEEP_BETWEEN_CALLS = 0.8
 MAX_DESC_CHARS = 3000
 
-JOB_EXTRACTIONS_PATH = (
-    "/Users/antoinechosson/Desktop/EELISA/"
-    "EELISA-Data-analysis/outputs/job_extractions.jsonl"
+# Use the enhanced European jobs dataset with education fields
+JOB_DATA_PATH = (
+    f"{PROJECT_ROOT}/datasets/european_jobs_with_education_fields.csv"
 )
+ISCED_PATH = f"{PROJECT_ROOT}/processing/education_classification/ISCED.csv"
+OUTPUT_PATH = f"{PROJECT_ROOT}/outputs/isced_classification.jsonl"
 
-ISCED_PATH = (
-    "/Users/antoinechosson/Desktop/EELISA/"
-    "EELISA-Data-analysis/processing/education_classification/ISCED.csv"
-)
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-OUTPUT_PATH = (
-    "/Users/antoinechosson/Desktop/EELISA/"
-    "EELISA-Data-analysis/outputs/isced_classification.jsonl"
-)
-
-client = OpenAI()
+# Check if API key exists
+if not os.getenv("OPENAI_API_KEY"):
+    raise ValueError("OPENAI_API_KEY not found in environment variables")
 
 # -----------------------
 # LOAD ISCED TAXONOMY
 # -----------------------
 
-isced_df = pd.read_csv(ISCED_PATH, dtype=str)
-isced_df = isced_df[
-    [
+try:
+    isced_df = pd.read_csv(ISCED_PATH, dtype=str)
+    
+    # Debug: Check actual columns
+    print("Actual columns in ISCED.csv:")
+    print(isced_df.columns.tolist())
+    
+    # Use the correct column names from the CSV
+    isced_df = isced_df[
+        [
+            "isced_2_digits",
+            "isced_2_digits_field",
+            "isced_3_digits",
+            "isced_3_digits_field",
+        ]
+    ].drop_duplicates()
+    
+    # Rename columns for consistency with the rest of the code
+    isced_df.columns = [
         "Broad field code",
         "Broad field name",
         "Narrow field code",
-        "Narrow field name",
+        "Narrow field name"
     ]
-].drop_duplicates()
+    
+    print(f"Loaded {len(isced_df)} ISCED categories")
+    
+except FileNotFoundError:
+    raise FileNotFoundError(f"ISCED file not found at {ISCED_PATH}")
+except Exception as e:
+    raise Exception(f"Error loading ISCED file: {e}")
 
 def build_isced_prompt_text(df: pd.DataFrame) -> str:
     return "\n".join(
@@ -93,8 +116,22 @@ Return JSON with:
 # LOAD JOBS
 # -----------------------
 
-with open(JOB_EXTRACTIONS_PATH, "r", encoding="utf-8") as f:
-    jobs = [json.loads(line) for line in f]
+try:
+    # Load European jobs CSV with education fields
+    jobs_df = pd.read_csv(JOB_DATA_PATH, dtype=str)
+    print(f"Loaded {len(jobs_df)} European jobs from CSV")
+    
+    # Convert to list of dictionaries for compatibility with existing code
+    jobs = jobs_df.to_dict('records')
+    
+    # Check what education field columns are available
+    education_cols = [col for col in jobs_df.columns if 'education' in col.lower()]
+    print(f"Available education columns: {education_cols}")
+    
+except FileNotFoundError:
+    raise FileNotFoundError(f"European jobs file not found at {JOB_DATA_PATH}")
+except Exception as e:
+    raise Exception(f"Error loading European jobs file: {e}")
 
 processed_ids = set()
 if os.path.exists(OUTPUT_PATH):
@@ -102,8 +139,9 @@ if os.path.exists(OUTPUT_PATH):
         for line in f:
             try:
                 processed_ids.add(json.loads(line)["job_id"])
-            except Exception:
-                pass
+            except (json.JSONDecodeError, KeyError) as e:
+                print(f"Warning: Could not parse line in output file: {e}")
+                continue
 
 # -----------------------
 # MAIN LOOP
@@ -119,7 +157,11 @@ with open(OUTPUT_PATH, "a", encoding="utf-8") as out:
 
     for job in jobs:
 
-        job_id = job["job_id"]
+        job_id = job.get("job_id")
+        if not job_id:
+            print("Warning: Job missing job_id, skipping")
+            continue
+            
         if job_id in processed_ids:
             continue
 
@@ -136,6 +178,9 @@ with open(OUTPUT_PATH, "a", encoding="utf-8") as out:
                         "role": "user",
                         "content": build_user_prompt(
                             job.get("job_title", ""),
+                            # Try different education field columns
+                            job.get("education_field_phd_clean") or
+                            job.get("education_field_master_clean") or
                             job.get("education_field"),
                             job.get("full_description", ""),
                             ISCED_LIST_TEXT
@@ -145,7 +190,16 @@ with open(OUTPUT_PATH, "a", encoding="utf-8") as out:
             )
             isced = json.loads(response.choices[0].message.content)
 
-        except Exception:
+        except json.JSONDecodeError as e:
+            print(f"Warning: Invalid JSON response for job {job_id}: {e}")
+            isced = {
+                "isced_broad_code": None,
+                "isced_broad_name": None,
+                "isced_narrow_code": None,
+                "isced_narrow_name": None
+            }
+        except Exception as e:
+            print(f"Error processing job {job_id}: {e}")
             isced = {
                 "isced_broad_code": None,
                 "isced_broad_name": None,
