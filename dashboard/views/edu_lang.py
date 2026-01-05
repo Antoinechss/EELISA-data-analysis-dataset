@@ -198,6 +198,130 @@ def render_education_section(base_df: pd.DataFrame):
 
 
 # -----------------
+# SECTION: EDUCATION FIELDS
+# -----------------
+
+def build_education_field_df(df: pd.DataFrame):
+    """Build a dataframe with education fields from PhD and Master extractions."""
+    records = []
+
+    # Check which ISCO column is available
+    isco_col = None
+    if "isco_3_label" in df.columns:
+        isco_col = "isco_3_label"
+    elif "isco_3_digit_label" in df.columns:
+        isco_col = "isco_3_digit_label"
+
+    for _, row in df.iterrows():
+        if pd.notna(row.get("education_field_phd_clean")):
+            records.append({
+                "degree": "PhD",
+                "field": row["education_field_phd_clean"],
+                "isco_3_label": row.get(isco_col) if isco_col else None
+            })
+
+        if pd.notna(row.get("education_field_master_clean")):
+            records.append({
+                "degree": "Master",
+                "field": row["education_field_master_clean"],
+                "isco_3_label": row.get(isco_col) if isco_col else None
+            })
+
+    return pd.DataFrame(records)
+
+
+def render_education_fields_section(base_df: pd.DataFrame):
+    """Render the education fields analysis section."""
+    st.subheader("Education Fields When Mentioned")
+    
+    # Check if required columns exist
+    required_cols = ["education_field_phd_clean", "education_field_master_clean"]
+    if not all(col in base_df.columns for col in required_cols):
+        st.info("Education field data not available. Please run the education field extraction process first.")
+        return
+    
+    edu_field_df = build_education_field_df(base_df)
+    
+    if edu_field_df.empty:
+        st.info("No education fields found in the dataset.")
+        return
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        degree_choice = st.radio(
+            "Degree level",
+            ["PhD", "Master"],
+            horizontal=True,
+            key="edu_field_degree"
+        )
+
+    with col2:
+        agg_choice = st.selectbox(
+            "Aggregate by",
+            ["Overall", "ISCO-3 occupation"],
+            key="edu_field_agg"
+        )
+
+    df_sel = edu_field_df[edu_field_df["degree"] == degree_choice].copy()
+
+    # Remove generic placeholders and outliers
+    GENERIC_FIELDS = {
+        "a relevant field",
+        "relevant field",
+        "technical or industry related field",
+        "one of the following fields",
+        "the specialty",
+        "a master"
+    }
+    df_sel = df_sel[~df_sel["field"].str.lower().isin(GENERIC_FIELDS)]
+    # Remove fields containing "English" or "Huawei" (outliers)
+    df_sel = df_sel[
+        ~df_sel["field"].str.contains("English", case=False, na=False)
+    ]
+    df_sel = df_sel[
+        ~df_sel["field"].str.contains("Huawei", case=False, na=False)
+    ]
+
+    if agg_choice == "Overall":
+        top_fields = (
+            df_sel["field"]
+            .value_counts()
+            .head(10)
+        )
+
+    else:  # ISCO-3 occupation
+        isco_options = sorted(df_sel["isco_3_label"].dropna().unique())
+        if not isco_options:
+            st.info(f"No ISCO-3 data available for {degree_choice} degrees.")
+            return
+            
+        isco_choice = st.selectbox(
+            "Select ISCO-3 occupation",
+            isco_options,
+            key="edu_field_isco"
+        )
+
+        top_fields = (
+            df_sel[df_sel["isco_3_label"] == isco_choice]["field"]
+            .value_counts()
+            .head(10)
+        )
+
+    if top_fields.empty:
+        st.info(f"No education fields found for this selection ({degree_choice}).")
+    else:
+        st.markdown(f"**Top {degree_choice} studies cited**")
+
+        for i, field in enumerate(top_fields.index, start=1):
+            st.markdown(f"{i}. **{field}**")
+            
+    st.caption(
+        "Education fields explicitly mentioned in job postings."
+    )
+
+
+# -----------------
 # SECTION: LANGUAGES
 # -----------------
 
@@ -271,15 +395,23 @@ def render_language_section(base_df: pd.DataFrame):
 # MAIN PAGE FUNCTION
 # -----------------
 
-def show_education_language_page(contents: pd.DataFrame):
+def show_education_language_page(contents: pd.DataFrame, enhanced_jobs: pd.DataFrame = None):
     # Base dataframe: never mutate this
     base_df = contents.copy()
     st.title("Education & Languages Requirements")
     st.markdown("---")
-    # Layout
+    
+    # First row: Education levels and Languages
     col1, col2 = st.columns(2, gap="large")
     with col1:
         render_education_section(base_df)
 
     with col2:
         render_language_section(base_df)
+    
+    # Second row: Education Fields (full width) - use enhanced dataset if available
+    st.markdown("---")
+    if enhanced_jobs is not None:
+        render_education_fields_section(enhanced_jobs)
+    else:
+        render_education_fields_section(base_df)

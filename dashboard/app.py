@@ -45,6 +45,15 @@ div[data-testid="stPlotlyChart"] {
 
 # Datasets with relative paths
 eur_jobs = pd.read_csv(get_dataset_path('european_jobs.csv'))
+
+# Try to load enhanced dataset with education fields, fallback to original
+try:
+    enhanced_jobs = pd.read_csv(get_dataset_path('european_jobs_with_education_fields.csv'))
+    print("✅ Using enhanced dataset with education fields")
+    eur_jobs = enhanced_jobs
+except FileNotFoundError:
+    print("ℹ️ Enhanced dataset not found, using original dataset")
+
 content = pd.read_csv(get_dataset_path('extractions.csv'))
 
 # Sidebar
@@ -72,7 +81,7 @@ elif page == "Overview":
 
 # ---- Education & Languages ----
 elif page == "Education & Languages":
-    show_education_language_page(content)
+    show_education_language_page(content, eur_jobs)
 
 # ---- Skills ----
 elif page == "Skills":
