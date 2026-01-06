@@ -97,4 +97,4 @@ elif page == "DigComp":
 
 # ---- Profiles ----
 elif page == "Profiles":
-    show_profiles_page(eur_jobs)
+    show_profiles_page(content)

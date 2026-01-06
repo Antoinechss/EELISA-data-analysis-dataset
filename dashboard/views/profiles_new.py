@@ -15,15 +15,12 @@ import sys
 import os
 
 # Add analysis directory to path for imports
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'analysis'))
 
 try:
     from clustering import run_clustering, characterize_clusters, get_cluster_summary_stats
-except ImportError as e:
-    st.error(f"Could not import clustering module: {e}")
-    run_clustering = None
-    characterize_clusters = None
-    get_cluster_summary_stats = None
+except ImportError:
+    st.error("Could not import clustering module. Please ensure clustering.py is available.")
 
 
 def create_cluster_projection_chart(df_clustered, profiles):
@@ -70,9 +67,7 @@ def create_cluster_projection_chart(df_clustered, profiles):
             y=-0.2,
             xanchor="center",
             x=0.5
-        ),
-        plot_bgcolor='white',
-        paper_bgcolor='white'
+        )
     )
     
     return fig
@@ -124,9 +119,38 @@ def create_profile_radar_chart(cluster_stats):
         title="Profile Characteristics",
         height=400,
         margin=dict(t=60, l=20, r=20, b=60),
+        font=dict(color="#1F2933")
+    )
+    
+    return fig
+
+
+def create_education_distribution_chart(cluster_stats):
+    """Create education level distribution chart."""
+    
+    edu_data = cluster_stats.get('education_distribution', {})
+    if not edu_data:
+        return None
+        
+    df_edu = pd.DataFrame(
+        list(edu_data.items()), 
+        columns=['Education Level', 'Count']
+    ).sort_values('Count', ascending=True)
+    
+    fig = px.bar(
+        df_edu,
+        x='Count',
+        y='Education Level',
+        orientation='h',
+        title="Education Profile",
+        color_discrete_sequence=['#4A90E2']
+    )
+    
+    fig.update_layout(
+        height=300,
+        margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color="#1F2933"),
-        plot_bgcolor='white',
-        paper_bgcolor='white'
+        showlegend=False
     )
     
     return fig
@@ -160,68 +184,38 @@ def create_occupation_distribution_chart(cluster_stats):
         margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color="#1F2933"),
         showlegend=False,
-        yaxis=dict(autorange="reversed"),
-        plot_bgcolor='white',
-        paper_bgcolor='white'
+        yaxis=dict(autorange="reversed")
     )
     
     return fig
 
 
 def create_geographic_distribution_chart(cluster_stats):
-    """Create geographic distribution map."""
+    """Create geographic distribution chart."""
     
     country_data = cluster_stats.get('country_distribution', {})
     if not country_data:
         return None
-    
-    # Create country mapping for European countries
-    country_code_mapping = {
-        'Germany': 'DEU', 'France': 'FRA', 'Switzerland': 'CHE', 'Poland': 'POL',
-        'Italy': 'ITA', 'Latvia': 'LVA', 'Croatia': 'HRV', 'Belgium': 'BEL',
-        'Sweden': 'SWE', 'Spain': 'ESP', 'Netherlands': 'NLD', 'Turkey': 'TUR',
-        'Austria': 'AUT', 'Portugal': 'PRT', 'Czech Republic': 'CZE',
-        'Denmark': 'DNK', 'Finland': 'FIN', 'Greece': 'GRC', 'Hungary': 'HUN',
-        'Ireland': 'IRL', 'Luxembourg': 'LUX', 'Slovakia': 'SVK', 'Slovenia': 'SVN',
-        'Estonia': 'EST', 'Lithuania': 'LTU', 'Malta': 'MLT', 'Cyprus': 'CYP',
-        'Bulgaria': 'BGR', 'Romania': 'ROU', 'Norway': 'NOR', 'Iceland': 'ISL'
-    }
-    
-    # Prepare data for choropleth
-    df_geo = pd.DataFrame([
-        {
-            'country': country,
-            'job_count': count,
-            'country_code': country_code_mapping.get(country, country[:3].upper())
-        }
-        for country, count in country_data.items()
-    ])
-    
-    # Create choropleth map
-    fig = px.choropleth(
-        df_geo,
-        locations='country_code',
-        color='job_count',
-        hover_name='country',
-        color_continuous_scale="Blues",
-        labels={"job_count": "Jobs"},
-        title="Geographic Distribution"
+        
+    df_geo = pd.DataFrame(
+        list(country_data.items())[:8], 
+        columns=['Country', 'Jobs']
     )
     
-    fig.update_geos(
-        scope="europe",
-        showframe=False,
-        showcoastlines=True,
-        projection_type='equirectangular'
+    fig = px.bar(
+        df_geo,
+        x='Country',
+        y='Jobs',
+        title="Geographic Distribution",
+        color_discrete_sequence=['#8E44AD']
     )
     
     fig.update_layout(
-        height=400,
+        height=300,
         margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color="#1F2933"),
-        coloraxis_showscale=True,
-        plot_bgcolor='white',
-        paper_bgcolor='white'
+        showlegend=False,
+        xaxis_tickangle=45
     )
     
     return fig
@@ -257,16 +251,11 @@ def show_profiles_page(df):
     st.title("Transition Engineering Profiles")
     st.markdown("---")
     
-    # Check if clustering functions are available
-    if run_clustering is None:
-        st.error("Clustering functionality is not available. Please check the clustering module.")
-        st.info("The clustering module requires scikit-learn. Please ensure it's installed.")
-        return
-    
     st.markdown("""
-    This section uses clustering analysis to automatically group similar engineering jobs into distinct profiles.
-    The algorithm identifies patterns in skills, competencies, and job characteristics to discover different 
-    types of engineering roles across European markets.
+    **Discover distinct engineering profiles** through advanced pattern analysis of European job markets.
+    These profiles represent different approaches to engineering in the context of digital and sustainability transitions.
+    
+    Each profile aggregates jobs based on skills, competencies, education pathways, and geographic patterns.
     """)
     
     # Initialize session state for clustering
@@ -338,15 +327,44 @@ def show_profiles_page(df):
     # Get detailed stats for selected profile
     cluster_stats = get_cluster_summary_stats(df_clustered, selected_cluster_id)
     
+    # Profile overview metrics
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("Profile Size", f"{selected_profile['size']:,}")
+    
+    with col2:
+        primary_edu = cluster_stats.get('education_distribution', {})
+        top_edu = max(primary_edu, key=primary_edu.get) if primary_edu else "N/A"
+        st.metric("Primary Education", top_edu.title())
+    
+    with col3:
+        sustainability_rate = cluster_stats.get('transition_indicators', {}).get('sustainability_adoption', 0)
+        st.metric("Sustainability Focus", f"{sustainability_rate:.1f}%")
+    
+    with col4:
+        digital_rate = cluster_stats.get('transition_indicators', {}).get('high_digital_intensity', 0)
+        st.metric("Digital Intensity", f"{digital_rate:.1f}%")
+    
     # Detailed visualizations
     st.markdown("##### Profile Characteristics")
     
-    # Top row: Radar chart (full width)
-    radar_fig = create_profile_radar_chart(cluster_stats)
-    st.plotly_chart(radar_fig, use_container_width=True)
+    # Top row: Radar chart and education
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        radar_fig = create_profile_radar_chart(cluster_stats)
+        st.plotly_chart(radar_fig, use_container_width=True)
+    
+    with col2:
+        edu_fig = create_education_distribution_chart(cluster_stats)
+        if edu_fig:
+            st.plotly_chart(edu_fig, use_container_width=True)
+        else:
+            st.info("Education data not available")
     
     # Bottom row: Occupations and geography
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2, 1])
     
     with col1:
         occ_fig = create_occupation_distribution_chart(cluster_stats)
