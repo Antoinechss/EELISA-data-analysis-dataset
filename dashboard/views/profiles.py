@@ -17,6 +17,9 @@ import os
 # Add analysis directory to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+# Import centralized styling
+from style import COLOR_PALETTE, apply_chart_style, show_chart_with_card
+
 try:
     from clustering import run_clustering, characterize_clusters, get_cluster_summary_stats
 except ImportError as e:
@@ -62,7 +65,7 @@ def create_cluster_projection_chart(df_clustered, profiles):
     
     fig.update_layout(
         margin=dict(t=60, l=20, r=20, b=60),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE['text_primary']),
         showlegend=True,
         legend=dict(
             orientation="h",
@@ -109,8 +112,8 @@ def create_profile_radar_chart(cluster_stats):
         theta=categories,
         fill='toself',
         name='Profile Signature',
-        line_color='#2E8B57',
-        fillcolor='rgba(46, 139, 87, 0.3)'
+        line_color=COLOR_PALETTE['positive_green'],
+        fillcolor='rgba(16, 185, 129, 0.3)'
     ))
     
     fig.update_layout(
@@ -124,7 +127,7 @@ def create_profile_radar_chart(cluster_stats):
         title="Profile Characteristics",
         height=400,
         margin=dict(t=60, l=20, r=20, b=60),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE['text_primary']),
         plot_bgcolor='white',
         paper_bgcolor='white'
     )
@@ -152,13 +155,13 @@ def create_occupation_distribution_chart(cluster_stats):
         y='Occupation_Short',
         orientation='h',
         title="Primary Occupations",
-        color_discrete_sequence=['#FF6B35']
+        color_discrete_sequence=[COLOR_PALETTE['tertiary_orange']]
     )
     
     fig.update_layout(
         height=max(250, len(df_isco) * 45),
         margin=dict(t=60, l=20, r=20, b=60),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE['text_primary']),
         showlegend=False,
         yaxis=dict(autorange="reversed"),
         plot_bgcolor='white',
@@ -218,7 +221,7 @@ def create_geographic_distribution_chart(cluster_stats):
     fig.update_layout(
         height=400,
         margin=dict(t=60, l=20, r=20, b=60),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE['text_primary']),
         coloraxis_showscale=True,
         plot_bgcolor='white',
         paper_bgcolor='white'
@@ -310,7 +313,7 @@ def show_profiles_page(df):
     st.markdown("Explore how different engineering profiles are distributed across the technical-systems space:")
     
     projection_fig = create_cluster_projection_chart(df_clustered, profiles)
-    st.plotly_chart(projection_fig, use_container_width=True)
+    show_chart_with_card(projection_fig)
     
     st.markdown("---")
     
@@ -343,7 +346,7 @@ def show_profiles_page(df):
     
     # Top row: Radar chart (full width)
     radar_fig = create_profile_radar_chart(cluster_stats)
-    st.plotly_chart(radar_fig, use_container_width=True)
+    show_chart_with_card(radar_fig)
     
     # Bottom row: Occupations and geography
     col1, col2 = st.columns([1, 1])
@@ -351,14 +354,14 @@ def show_profiles_page(df):
     with col1:
         occ_fig = create_occupation_distribution_chart(cluster_stats)
         if occ_fig:
-            st.plotly_chart(occ_fig, use_container_width=True)
+            show_chart_with_card(occ_fig)
         else:
             st.info("Occupation data not available")
     
     with col2:
         geo_fig = create_geographic_distribution_chart(cluster_stats)
         if geo_fig:
-            st.plotly_chart(geo_fig, use_container_width=True)
+            show_chart_with_card(geo_fig)
         else:
             st.info("Geographic data not available")
     

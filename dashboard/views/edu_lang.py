@@ -14,7 +14,7 @@ project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from dashboard.style import show_chart_with_card
+from dashboard.style import show_chart_with_card, COLOR_PALETTE
 from dashboard.helpers import restore_list_json
 
 
@@ -85,7 +85,7 @@ def render_education_section(base_df: pd.DataFrame):
     ))
     fig_kpi.update_layout(
         margin=dict(t=35, l=20, r=20, b=15),
-        font=dict(color="#1F2933")
+        font=dict(color=COLOR_PALETTE["text_primary"])
     )
     show_chart_with_card(fig_kpi, height=170)
 
@@ -114,13 +114,13 @@ def render_education_section(base_df: pd.DataFrame):
             text="percentage",
             labels={"education_level": "Education level", "percentage": "Share of job postings (%)"},
             title="Distribution of Education Levels (When Specified)",
-            color_discrete_sequence=["#3B6C8E"]
+            color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
         )
         fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
         fig.update_layout(
             yaxis_range=[0, 100],
             margin=dict(t=55, l=40, r=20, b=40),
-            font=dict(color="#1F2933")
+            font=dict(color=COLOR_PALETTE["text_primary"])
         )
         show_chart_with_card(fig)
 
@@ -145,13 +145,13 @@ def render_education_section(base_df: pd.DataFrame):
             barmode="stack",
             labels={"country": "Country", "percentage": "Share (%)", "education_level_clean": "Education level"},
             title="Education Level Distribution by Country",
-            color_discrete_sequence=["#9DB4C0", "#3B6C8E", "#162544"]
+            color_discrete_sequence=[COLOR_PALETTE["border_medium"], COLOR_PALETTE["primary_blue"], COLOR_PALETTE["text_primary"]]
         )
         fig.update_layout(
             yaxis_range=[0, 100],
             xaxis_tickangle=-45,
             margin=dict(t=55, l=40, r=20, b=90),
-            font=dict(color="#1F2933"),
+            font=dict(color=COLOR_PALETTE["text_primary"]),
             legend_title_text="Education level"
         )
         show_chart_with_card(fig)
@@ -187,13 +187,13 @@ def render_education_section(base_df: pd.DataFrame):
             barmode="stack",
             labels={"isco_3_label": "ISCO-3 occupation", "percentage": "Share (%)", "education_level_clean": "Education level"},
             title="Education Level Distribution by ISCO-3 Occupation (Top groups)",
-            color_discrete_sequence=["#9DB4C0", "#3B6C8E", "#162544"]
+            color_discrete_sequence=[COLOR_PALETTE["border_medium"], COLOR_PALETTE["primary_blue"], COLOR_PALETTE["text_primary"]]
         )
         fig.update_layout(
             xaxis_range=[0, 100],
             yaxis=dict(autorange="reversed"),
             margin=dict(t=55, l=40, r=20, b=40),
-            font=dict(color="#1F2933"),
+            font=dict(color=COLOR_PALETTE["text_primary"]),
             legend_title_text="Education level"
         )
         show_chart_with_card(fig)
@@ -345,7 +345,7 @@ def render_language_section(base_df: pd.DataFrame):
     ))
     fig_metric.update_layout(
         margin=dict(t=35, l=20, r=20, b=15),
-        font=dict(color="#1F2933")
+        font=dict(color=COLOR_PALETTE["text_primary"])
     )
     show_chart_with_card(fig_metric, height=170)
 
@@ -374,12 +374,12 @@ def render_language_section(base_df: pd.DataFrame):
         orientation="h",
         labels={"job_count": "Number of job postings", "language": " "},
         title="Top Most Frequently Requested Languages",
-        color_discrete_sequence=["#3B6C8E"]
+        color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
     )
     fig_lang.update_layout(
         yaxis=dict(autorange="reversed"),
         margin=dict(t=55, l=40, r=20, b=40),
-        font=dict(color="#1F2933")
+        font=dict(color=COLOR_PALETTE["text_primary"])
     )
     show_chart_with_card(fig_lang)
 
@@ -486,7 +486,7 @@ def create_isced_isco_heatmap(base_df: pd.DataFrame):
         yaxis_title="ISCED Education Field",
         height=500,
         margin=dict(t=60, l=200, r=40, b=150),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE["text_primary"]),
         xaxis=dict(tickangle=45)
     )
     
@@ -608,7 +608,7 @@ def create_isced_geo_map(base_df: pd.DataFrame):
     fig.update_layout(
         height=500,
         margin=dict(t=60, l=20, r=20, b=90),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE["text_primary"]),
         paper_bgcolor="rgba(0,0,0,0)",
         coloraxis_showscale=False  # Remove color bar
     )
@@ -696,7 +696,7 @@ def create_isced_level_distribution(base_df: pd.DataFrame):
         height=max(400, top_n * 40),  # Dynamic height based on bars
         yaxis=dict(autorange="reversed"),  # Largest on top
         margin=dict(t=60, l=40, r=120, b=90),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE["text_primary"]),
         showlegend=False,
         coloraxis_showscale=False
     )
@@ -888,7 +888,7 @@ def create_isced_greencomp_overlay(base_df: pd.DataFrame):
         fig.update_layout(
             height=500,
             margin=dict(t=60, l=60, r=20, b=60),
-            font=dict(color="#1F2933"),
+            font=dict(color=COLOR_PALETTE["text_primary"]),
             xaxis_title="Number of Jobs in Field",
             yaxis_title="Sustainability Exposure Rate (%)",
             coloraxis_showscale=False  # Remove color bar

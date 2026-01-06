@@ -11,7 +11,7 @@ if project_root not in sys.path:
 
 from digcomp import DIGCOMP_FRAMEWORK
 from dashboard.helpers import restore_list_safe
-from dashboard.style import show_chart_with_card
+from dashboard.style import show_chart_with_card, COLOR_PALETTE
 from analysis.digital_tools import display_tools_analysis
 from dashboard.utils import get_dataset_path, get_static_path
 
@@ -117,13 +117,17 @@ def show_digcomp_page(df):
 
                     fig = go.Figure()
 
+                    # Convert hex to rgba with transparency
+                    primary_rgb = tuple(int(COLOR_PALETTE["primary_blue"][i:i+2], 16) for i in (1, 3, 5))
+                    fill_color = f'rgba({primary_rgb[0]},{primary_rgb[1]},{primary_rgb[2]},0.3)'
+
                     fig.add_trace(
                         go.Scatterpolar(
                             r=values,
                             theta=categories,
                             fill="toself",
-                            line=dict(color="#3B6C8E", width=2),
-                            fillcolor="rgba(59,108,142,0.3)",
+                            line=dict(color=COLOR_PALETTE["primary_blue"], width=2),
+                            fillcolor=fill_color,
                             name="DigComp"
                         )
                     )
@@ -138,7 +142,7 @@ def show_digcomp_page(df):
                             )
                         ),
                         showlegend=False,
-                        font=dict(color="#1F2933"),
+                        font=dict(color=COLOR_PALETTE["text_primary"]),
                         margin=dict(t=60, l=40, r=40, b=90),
                         paper_bgcolor="rgba(0,0,0,0)",
                         plot_bgcolor="rgba(0,0,0,0)"
@@ -170,7 +174,7 @@ def show_digcomp_page(df):
         ))
         fig_metric.update_layout(
             margin=dict(t=35, l=20, r=20, b=15),
-            font=dict(color="#1F2933")
+            font=dict(color=COLOR_PALETTE["text_primary"])
         )
         show_chart_with_card(fig_metric, height=170)
 

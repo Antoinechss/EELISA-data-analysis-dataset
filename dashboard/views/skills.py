@@ -15,14 +15,14 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from dashboard.helpers import restore_list_safe, normalize
-from dashboard.style import show_chart_with_card
+from dashboard.style import show_chart_with_card, COLOR_PALETTE
 from dashboard.utils import get_dataset_path
 
 df = pd.read_csv(get_dataset_path('extractions.csv'))
 
 SKILL_COLOR_PALETTE = {
-    "Hard": "#3B6C8E",
-    "Soft": "#94A3B8"
+    "Hard": COLOR_PALETTE["primary_blue"],
+    "Soft": COLOR_PALETTE["secondary_red"]
 }
 
 

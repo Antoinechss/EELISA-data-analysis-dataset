@@ -9,6 +9,7 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from dashboard.utils import get_static_path
+from dashboard.style import show_section_header, create_info_card
 
 
 def show_home_page():

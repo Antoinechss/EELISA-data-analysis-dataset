@@ -10,7 +10,11 @@ project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from dashboard.style import show_chart_with_card
+from dashboard.style import (
+    show_chart_with_card, 
+    COLOR_PALETTE, 
+    create_styled_bar_chart
+)
 from dashboard.utils import get_dataset_path
 
 eur_jobs = pd.read_csv(get_dataset_path('european_jobs.csv'))
@@ -130,9 +134,10 @@ def show_overview_page():
             "job_count": country_counts.values
         })
 
-        # Color mapping (aligned with dashboard style)
+        # Color mapping (aligned with centralized styling)
         country_df["color"] = country_df["country_name"].apply(
-            lambda x: "#3B6C8E" if x in EELISA_COUNTRIES else "#D1D5DB"
+            lambda x: (COLOR_PALETTE["primary_blue"] if x in EELISA_COUNTRIES 
+                      else COLOR_PALETTE["border_medium"])
         )
 
         fig = px.bar(
@@ -158,7 +163,7 @@ def show_overview_page():
         fig.update_layout(
             xaxis_tickangle=-45,
             showlegend=False,
-            font=dict(color="#1F2933"),
+            font=dict(color=COLOR_PALETTE["text_primary"]),
             margin=dict(t=60, l=30, r=20, b=120)
         )
 
@@ -190,15 +195,15 @@ def show_overview_page():
                 "job_count": "Number of Job Postings in the dataset",
                 "isco_3_label": "ISCO-3 Occupational Group"
             },
-            color_discrete_sequence=["#3B6C8E"],  # consistent neutral / digital blue
+            color_discrete_sequence=[COLOR_PALETTE["primary_blue"]],
             template="plotly_white"
         )
 
         fig_isco.update_layout(
-            height = 600,
+            height=600,
             yaxis=dict(autorange="reversed"),  # largest on top
             margin=dict(t=60, l=40, r=20, b=90),
-            font=dict(color="#1F2933")
+            font=dict(color=COLOR_PALETTE["text_primary"])
         )
 
         fig_isco.update_traces(
@@ -261,8 +266,8 @@ def show_overview_page():
         fig.update_layout(
             height=600,
             margin=dict(t=60, l=20, r=20, b=20),
-            font=dict(color="#1F2933"),
-            coloraxis_showscale=False,  
+            font=dict(color=COLOR_PALETTE["text_primary"]),
+            coloraxis_showscale=False,
             paper_bgcolor="rgba(0,0,0,0)"
         )
 

@@ -5,27 +5,10 @@ import plotly.graph_objects as go
 import re
 from collections import Counter
 from itertools import chain
-from dashboard.style import show_chart_with_card
+from dashboard.style import show_chart_with_card, COLOR_PALETTE
 
-# =======================
-# COLOR PALETTE
-# =======================
-
-PRIMARY = "#648fa9"
-SECONDARY = "#386c8b"
-ACCENT = "#fe5758"
-SOFT_BG = "#f2d9bc"
-
-CUSTOM_CONTINUOUS_SCALE = [
-    [0.0, SOFT_BG],
-    [0.4, PRIMARY],
-    [0.7, SECONDARY],
-    [1.0, ACCENT],
-]
-
-# =======================
-# TECH CONTEXT DEFINITIONS
-# =======================
+# Remove old color definitions - now using centralized styling
+# Professional treemap design with centralized colors
 
 TECH_CONTEXT_WORDS = [
     "programming", "language", "development", "developer", "coding",
@@ -137,29 +120,50 @@ def display_tools_analysis(df):
         treemap_df = pd.DataFrame(top_tools, columns=["tool", "count"])
 
         # =======================
-        # TREEMAP
+        # PROFESSIONAL TREEMAP with centralized styling
         # =======================
+
+        # Create professional color scale using COLOR_PALETTE
+        treemap_colors = [
+            COLOR_PALETTE["page_background"],   # Light background
+            COLOR_PALETTE["border_medium"],     # Muted for lower values
+            COLOR_PALETTE["chart_teal"],        # Teal accent color
+            COLOR_PALETTE["primary_blue"]       # Primary blue for highest values
+        ]
+        
+        # Create custom colorscale
+        custom_colorscale = [
+            [0.0, treemap_colors[0]],
+            [0.3, treemap_colors[1]], 
+            [0.7, treemap_colors[2]],
+            [1.0, treemap_colors[3]]
+        ]
 
         fig = go.Figure(go.Treemap(
             labels=[f"{t}<br>{c} jobs" for t, c in top_tools],
             values=treemap_df["count"],
             parents=[""] * len(treemap_df),
-            root=dict(color="white"),
+            root=dict(color=COLOR_PALETTE["card_background"]),
             marker=dict(
                 colors=treemap_df["count"],
-                colorscale=CUSTOM_CONTINUOUS_SCALE,
-                line=dict(width=2, color="white"),
+                colorscale=custom_colorscale,
+                line=dict(width=2, color=COLOR_PALETTE["card_background"]),
                 showscale=False
-            )
+            ),
+            textfont=dict(
+                size=12,
+                color=COLOR_PALETTE["text_primary"]
+            ),
+            hovertemplate="<b>%{label}</b><br>Mentions: %{value}<extra></extra>"
         ))
 
         fig.update_layout(
-            title="Top 30 Technical Tools by Mentions",
-            height=700,  # Increase height from 600 to 700
-            paper_bgcolor="white",
-            font=dict(color='black', size=12),  # Reduce font size from 14 to 12
-            title_font=dict(color='black', size=18),  # Reduce title size from 20 to 18
-            margin=dict(t=80, l=40, r=40, b=40)  # Increase all margins
+            title="Digital Tools Mentioned in Job Postings",
+            height=650,
+            paper_bgcolor=COLOR_PALETTE["card_background"],
+            font=dict(color=COLOR_PALETTE["text_primary"], size=12),
+            title_font=dict(color=COLOR_PALETTE["text_primary"], size=18),
+            margin=dict(t=80, l=40, r=40, b=40)
         )
 
         show_chart_with_card(fig)
@@ -178,14 +182,14 @@ def display_tools_analysis(df):
             y=list(category_counts.values()),
             labels={"x": "Category", "y": "Mentions"},
             title="Tool Mentions by Category",
-            color_discrete_sequence=[PRIMARY]
+            color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
         )
 
         fig_cat.update_layout(
             template="plotly_white",
-            paper_bgcolor="white",
-            font=dict(color="black"),
-            title_font=dict(color="black", size=18),
+            paper_bgcolor=COLOR_PALETTE["card_background"],
+            font=dict(color=COLOR_PALETTE["text_primary"]),
+            title_font=dict(color=COLOR_PALETTE["text_primary"], size=18),
             xaxis_tickangle=-30,
             margin=dict(t=60, l=20, r=20, b=150)
         )

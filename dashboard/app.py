@@ -9,6 +9,7 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from dashboard.utils import get_dataset_path
+from dashboard.style import apply_global_style
 from dashboard.views.overview import show_overview_page
 from dashboard.views.edu_lang import show_education_language_page
 from dashboard.views.skills import show_skills_page
@@ -23,25 +24,8 @@ st.set_page_config(
     layout="wide"
 )
 
-# Simple, clean CSS that just works
-st.markdown("""
-<style>
-/* Set page background */
-.main .block-container {
-    background-color: #f8f9fa;
-}
-
-/* Simple card styling for charts only */
-div[data-testid="stPlotlyChart"] {
-    background-color: white !important;
-    padding: 1.25rem !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-    margin-bottom: 1.5rem !important;
-    border: 1px solid #e5e7eb !important;
-}
-</style>
-""", unsafe_allow_html=True)
+# Apply centralized styling
+apply_global_style()
 
 # Datasets with relative paths
 eur_jobs = pd.read_csv(get_dataset_path('european_jobs.csv'))

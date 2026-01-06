@@ -13,7 +13,7 @@ if project_root not in sys.path:
 
 from greencomp import GREENCOMP_FRAMEWORK
 from dashboard.helpers import restore_list_safe
-from dashboard.style import show_chart_with_card
+from dashboard.style import show_chart_with_card, COLOR_PALETTE
 from dashboard.utils import get_dataset_path, get_static_path
 
 base_df = pd.read_csv(get_dataset_path('extractions.csv'))
@@ -108,6 +108,10 @@ def show_greencomp_page(df):
                     categories = categories + [categories[0]]
                     values = values + [values[0]]
 
+                    # Convert hex to rgba with transparency
+                    primary_rgb = tuple(int(COLOR_PALETTE["primary_blue"][i:i+2], 16) for i in (1, 3, 5))
+                    fill_color = f'rgba({primary_rgb[0]},{primary_rgb[1]},{primary_rgb[2]},0.3)'
+
                     fig = go.Figure()
 
                     fig.add_trace(
@@ -115,8 +119,8 @@ def show_greencomp_page(df):
                             r=values,
                             theta=categories,
                             fill="toself",
-                            line=dict(color="#3B6C8E", width=2),
-                            fillcolor="rgba(59,108,142,0.3)",
+                            line=dict(color=COLOR_PALETTE["primary_blue"], width=2),
+                            fillcolor=fill_color,
                             name="GreenComp"
                         )
                     )
@@ -131,7 +135,7 @@ def show_greencomp_page(df):
                             )
                         ),
                         showlegend=False,
-                        font=dict(color="#1F2933"),
+                        font=dict(color=COLOR_PALETTE["text_primary"]),
                         margin=dict(t=60, l=40, r=40, b=90),
                         paper_bgcolor="rgba(0,0,0,0)",
                         plot_bgcolor="rgba(0,0,0,0)"
@@ -166,7 +170,7 @@ def show_greencomp_page(df):
         ))
         fig_metric.update_layout(
             margin=dict(t=35, l=20, r=20, b=15),
-            font=dict(color="#1F2933")
+            font=dict(color=COLOR_PALETTE["text_primary"])
         )
         show_chart_with_card(fig_metric, height=170)
 
@@ -191,13 +195,13 @@ def show_greencomp_page(df):
             title="Distribution of GreenComp Integration Index",
             labels={"green_integration_index": "GreenComp integration score"},
             template="plotly_white",
-            color_discrete_sequence=["#3B6C8E"]
+            color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
         )
 
         fig_dist.update_layout(
             bargap=0.05,
             margin=dict(t=60, l=40, r=40, b=90),
-            font=dict(color="#1F2933")
+            font=dict(color=COLOR_PALETTE["text_primary"])
         )
         show_chart_with_card(fig_dist)
 
@@ -230,7 +234,7 @@ def show_greencomp_page(df):
     fig_isco.update_layout(
         yaxis=dict(autorange="reversed"),
         margin=dict(t=60, l=40, r=40, b=90),
-        font=dict(color="#1F2933"),
+        font=dict(color=COLOR_PALETTE["text_primary"]),
         coloraxis_showscale=False
     )
     show_chart_with_card(fig_isco)
