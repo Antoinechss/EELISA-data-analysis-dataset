@@ -60,123 +60,112 @@ def show_digcomp_page(df):
     
     st.markdown("---")
 
-    col1, col2 = st.columns([3, 2])
-
     # ---------------
     # Radar Chart of DigComp competences
     # ---------------
 
-    with col1:
-        dig_df = base_df.copy()
+    dig_df = base_df.copy()
 
-        # Restore list structure for competences
-        dig_df["digital_competences"] = dig_df["digital_competences"].apply(
-            restore_list_safe
+    # Restore list structure for competences
+    dig_df["digital_competences"] = dig_df["digital_competences"].apply(
+        restore_list_safe
+    )
+
+    # Explode competences for individual analysis
+    dig_exploded = dig_df.explode("digital_competences")
+    dig_exploded = dig_exploded[
+        dig_exploded["digital_competences"].notna()
+        & (dig_exploded["digital_competences"] != "")
+    ]
+
+    if dig_exploded.empty:
+        st.info("No DigComp competences explicitly identified in the dataset.")
+    else:
+        dig_counts = (
+            dig_exploded["digital_competences"]
+            .value_counts()
+            .reset_index()
+        )
+        TOP_N = 8
+
+        dig_counts = (
+            dig_counts
+            .sort_values("count", ascending=False)
+            .head(TOP_N)
         )
 
-        # Explode competences for individual analysis
-        dig_exploded = dig_df.explode("digital_competences")
-        dig_exploded = dig_exploded[
-            dig_exploded["digital_competences"].notna()
-            & (dig_exploded["digital_competences"] != "")
-        ]
+        dig_counts.columns = ["competence", "count"]
 
-        if dig_exploded.empty:
-            st.info("No DigComp competences explicitly identified in the dataset.")
+        total = dig_counts["count"].sum()
+        if total == 0:
+            st.info("No DigComp competences available for visualisation.")
         else:
-            dig_counts = (
-                dig_exploded["digital_competences"]
-                .value_counts()
-                .reset_index()
-            )
-            TOP_N = 8
+            dig_counts["share"] = dig_counts["count"] / total * 100
 
-            dig_counts = (
-                dig_counts
-                .sort_values("count", ascending=False)
-                .head(TOP_N)
-            )
+            categories = dig_counts["competence"].tolist()
+            values = dig_counts["share"].tolist()
 
-            dig_counts.columns = ["competence", "count"]
-
-            total = dig_counts["count"].sum()
-            if total == 0:
-                st.info("No DigComp competences available for visualisation.")
+            if len(categories) < 3:
+                st.info("Not enough DigComp competences to build a radar chart.")
             else:
-                dig_counts["share"] = dig_counts["count"] / total * 100
+                # Close the loop for radar chart
+                categories = categories + [categories[0]]
+                values = values + [values[0]]
 
-                categories = dig_counts["competence"].tolist()
-                values = dig_counts["share"].tolist()
+                fig = go.Figure()
 
-                if len(categories) < 3:
-                    st.info("Not enough DigComp competences to build a radar chart.")
-                else:
-                    # Close the loop for radar chart
-                    categories = categories + [categories[0]]
-                    values = values + [values[0]]
+                # Convert hex to rgba with transparency
+                primary_rgb = tuple(int(COLOR_PALETTE["primary_blue"][i:i+2], 16) for i in (1, 3, 5))
+                fill_color = f'rgba({primary_rgb[0]},{primary_rgb[1]},{primary_rgb[2]},0.3)'
 
-                    fig = go.Figure()
+                fig.add_trace(
+                    go.Scatterpolar(
+                        r=values,
+                        theta=categories,
+                        fill="toself",
+                        line=dict(color=COLOR_PALETTE["primary_blue"], width=2),
+                        fillcolor=fill_color,
+                        name="DigComp"
+                    )
+                )
 
-                    # Convert hex to rgba with transparency
-                    primary_rgb = tuple(int(COLOR_PALETTE["primary_blue"][i:i+2], 16) for i in (1, 3, 5))
-                    fill_color = f'rgba({primary_rgb[0]},{primary_rgb[1]},{primary_rgb[2]},0.3)'
-
-                    fig.add_trace(
-                        go.Scatterpolar(
-                            r=values,
-                            theta=categories,
-                            fill="toself",
-                            line=dict(color=COLOR_PALETTE["primary_blue"], width=2),
-                            fillcolor=fill_color,
-                            name="DigComp"
+                fig.update_layout(
+                    title="Relative Importance of DigComp Competences in Job Postings",
+                    polar=dict(
+                        radialaxis=dict(
+                            visible=True,
+                            ticksuffix="%",
+                            range=[0, max(values) * 1.1]
                         )
-                    )
+                    ),
+                    showlegend=False,
+                    font=dict(color=COLOR_PALETTE["text_primary"]),
+                    paper_bgcolor="rgba(0,0,0,0)",
+                    plot_bgcolor="rgba(0,0,0,0)",
+                    height=500
+                )
 
-                    fig.update_layout(
-                        title="Relative Importance of DigComp Competences in Job Postings",
-                        polar=dict(
-                            radialaxis=dict(
-                                visible=True,
-                                ticksuffix="%",
-                                range=[0, max(values) * 1.1]
-                            )
-                        ),
-                        showlegend=False,
-                        font=dict(color=COLOR_PALETTE["text_primary"]),
-                        margin=dict(t=60, l=40, r=40, b=90),
-                        paper_bgcolor="rgba(0,0,0,0)",
-                        plot_bgcolor="rgba(0,0,0,0)"
-                    )
-
-                    show_chart_with_card(fig, height=None)
+                show_chart_with_card(fig, height=None)
     
-    with col2:
-        # Calculate share of jobs mentioning DigComp competences
-        dig_df = base_df.copy()
-        
-        # Process digital competences
-        dig_df["digital_competences"] = dig_df["digital_competences"].apply(restore_list_safe)
-        
-        # Check which jobs have at least one DigComp competence
-        dig_df["has_digcomp"] = dig_df["digital_competences"].apply(
-            lambda x: isinstance(x, list) and len(x) > 0 and any(comp.strip() for comp in x)
-        )
-        
-        # Calculate percentage
-        digcomp_share = dig_df["has_digcomp"].mean() * 100
-        
-        # Create metric chart
-        fig_metric = go.Figure(go.Indicator(
-            mode="number",
-            value=digcomp_share,
-            number={"suffix": "%"},
-            title={"text": "Jobs Explicitly Mentioning DigComp Competences"}
-        ))
-        fig_metric.update_layout(
-            margin=dict(t=35, l=20, r=20, b=15),
-            font=dict(color=COLOR_PALETTE["text_primary"])
-        )
-        show_chart_with_card(fig_metric, height=170)
+    # Calculate share of jobs mentioning DigComp competences
+    dig_df = base_df.copy()
+    
+    # Process digital competences
+    dig_df["digital_competences"] = dig_df["digital_competences"].apply(restore_list_safe)
+    
+    # Check which jobs have at least one DigComp competence
+    dig_df["has_digcomp"] = dig_df["digital_competences"].apply(
+        lambda x: isinstance(x, list) and len(x) > 0 and any(comp.strip() for comp in x)
+    )
+    
+    # Calculate percentage
+    digcomp_share = dig_df["has_digcomp"].mean() * 100
+    
+    # Simple metric for DigComp competences
+    st.metric(
+        label="Jobs Explicitly Mentioning DigComp Competences",
+        value=f"{digcomp_share:.1f}%"
+    )
 
     # Display digital tools analysis
     display_tools_analysis(eur_jobs)

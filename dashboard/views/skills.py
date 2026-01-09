@@ -67,135 +67,131 @@ def show_skills_page():
     # -----------------
     # Comparing the demand for soft vs hard skills 
     # -----------------
-    col1, col2 = st.columns([2, 3])
-    with col1:
-        # overall distribution
-        base_df = df.copy()
-        base_df['hard_skills'] = base_df['hard_skills'].apply(restore_list_safe)
-        base_df['soft_skills'] = base_df['soft_skills'].apply(restore_list_safe)
+    
+    # Overall distribution
+    base_df = df.copy()
+    base_df['hard_skills'] = base_df['hard_skills'].apply(restore_list_safe)
+    base_df['soft_skills'] = base_df['soft_skills'].apply(restore_list_safe)
 
-        # Fix: Count soft_skills, not hard_skills twice
-        hard_count = base_df['hard_skills'].apply(len).sum()
-        soft_count = base_df['soft_skills'].apply(len).sum()
+    # Fix: Count soft_skills, not hard_skills twice
+    hard_count = base_df['hard_skills'].apply(len).sum()
+    soft_count = base_df['soft_skills'].apply(len).sum()
 
-        shared_df = pd.DataFrame({
-            "skill_type": ["Hard", "Soft"],  # Change this to match other charts
-            "count": [hard_count, soft_count]
-        })
+    shared_df = pd.DataFrame({
+        "skill_type": ["Hard", "Soft"],  # Change this to match other charts
+        "count": [hard_count, soft_count]
+    })
 
-        shared_df["share"] = shared_df["count"] / shared_df["count"].sum() * 100
-        shared_df["Group"] = "All jobs"
+    shared_df["share"] = shared_df["count"] / shared_df["count"].sum() * 100
+    shared_df["Group"] = "All jobs"
 
-        # Fix: Use correct column names
-        fig = px.bar(
-            shared_df,
-            x="share",           # Fixed: use actual column name
-            y="Group",           # This column exists
-            color="skill_type",  # Fixed: use actual column name
-            orientation="h",
-            text=shared_df["share"].round(1).astype(str) + "%",
-            color_discrete_map={
-                "Hard": "#3B6C8E",      # Changed from "Hard skills"
-                "Soft": "#94A3B8"       # Changed from "Soft skills"
-            },
-            labels={
-                "share": "Share of skill mentions (%)",  # Fixed
-                "Group": "",
-                "skill_type": "Skill Type"  # Fixed
-            },
-            title="Distribution of Hard and Soft Skill Requirements"
-        )
+    # Fix: Use correct column names
+    fig = px.bar(
+        shared_df,
+        x="share",           # Fixed: use actual column name
+        y="Group",           # This column exists
+        color="skill_type",  # Fixed: use actual column name
+        orientation="h",
+        text=shared_df["share"].round(1).astype(str) + "%",
+        color_discrete_map={
+            "Hard": "#3B6C8E",      # Changed from "Hard skills"
+            "Soft": "#94A3B8"       # Changed from "Soft skills"
+        },
+        labels={
+            "share": "Share of skill mentions (%)",  # Fixed
+            "Group": "",
+            "skill_type": "Skill Type"  # Fixed
+        },
+        title="Distribution of Hard and Soft Skill Requirements"
+    )
 
-        fig.update_layout(
-            barmode="stack",
-            showlegend=True,
-            font=dict(color="#1F2933"),
-            margin=dict(t=60, l=40, r=120, b=90),  # Increased right margin from r=90 to r=120
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)"
-        )
+    fig.update_layout(
+        barmode="stack",
+        showlegend=True,
+        font=dict(color="#1F2933"),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        height=400
+    )
 
-        fig.update_traces(
-            textposition="inside",
-            insidetextanchor="middle"
-        )
-        show_chart_with_card(fig)
+    fig.update_traces(
+        textposition="inside",
+        insidetextanchor="middle"
+    )
+    show_chart_with_card(fig)
 
-    with col2:
-        # Distribution by ISCO occupation
-        skills_df = base_df.copy()
-        skills_df["hard_skills"] = skills_df["hard_skills"].apply(restore_list_safe)
-        skills_df["soft_skills"] = skills_df["soft_skills"].apply(restore_list_safe)
-        skills_df["hard_count"] = skills_df["hard_skills"].apply(len)
-        skills_df["soft_count"] = skills_df["soft_skills"].apply(len)
-        isco_skills = (
-            skills_df
-            .groupby("isco_3_label")[["hard_count", "soft_count"]]
-            .sum()
-            .reset_index()
-        )
+    # Distribution by ISCO occupation
+    skills_df = base_df.copy()
+    skills_df["hard_skills"] = skills_df["hard_skills"].apply(restore_list_safe)
+    skills_df["soft_skills"] = skills_df["soft_skills"].apply(restore_list_safe)
+    skills_df["hard_count"] = skills_df["hard_skills"].apply(len)
+    skills_df["soft_count"] = skills_df["soft_skills"].apply(len)
+    isco_skills = (
+        skills_df
+        .groupby("isco_3_label")[["hard_count", "soft_count"]]
+        .sum()
+        .reset_index()
+    )
 
-        isco_skills["total"] = isco_skills["hard_count"] + isco_skills["soft_count"]
-        isco_skills = isco_skills[isco_skills["total"] > 0]
-        isco_skills["hard_share"] = isco_skills["hard_count"] / isco_skills["total"] * 100
-        isco_skills["soft_share"] = isco_skills["soft_count"] / isco_skills["total"] * 100
-        
-        TOP_N = 12
+    isco_skills["total"] = isco_skills["hard_count"] + isco_skills["soft_count"]
+    isco_skills = isco_skills[isco_skills["total"] > 0]
+    isco_skills["hard_share"] = isco_skills["hard_count"] / isco_skills["total"] * 100
+    isco_skills["soft_share"] = isco_skills["soft_count"] / isco_skills["total"] * 100
+    
+    TOP_N = 12
 
-        top_isco = (
-            isco_skills
-            .sort_values("total", ascending=False)
-            .head(TOP_N)
-        )
+    top_isco = (
+        isco_skills
+        .sort_values("total", ascending=False)
+        .head(TOP_N)
+    )
 
-        isco_long = top_isco.melt(
-            id_vars="isco_3_label",
-            value_vars=["hard_share", "soft_share"],
-            var_name="skill_type",
-            value_name="share"
-        )
+    isco_long = top_isco.melt(
+        id_vars="isco_3_label",
+        value_vars=["hard_share", "soft_share"],
+        var_name="skill_type",
+        value_name="share"
+    )
 
-        isco_long["skill_type"] = isco_long["skill_type"].map({
-            "hard_share": "Hard",    # Changed from "Hard skills"
-            "soft_share": "Soft"     # Changed from "Soft skills"
-        })
+    isco_long["skill_type"] = isco_long["skill_type"].map({
+        "hard_share": "Hard",    # Changed from "Hard skills"
+        "soft_share": "Soft"     # Changed from "Soft skills"
+    })
 
-        fig = px.bar(
-            isco_long,
-            x="share",
-            y="isco_3_label",
-            color="skill_type",
-            orientation="h",
-            color_discrete_map={
-                "Hard": "#3B6C8E",
-                "Soft": "#94A3B8"
-            },
-            labels={
-                "share": "Share of skill mentions (%)",
-                "isco_3_label": " ",
-                "skill_type": "Skill type"
-            },
-            title="Distribution of Hard and Soft Skill Requirements by ISCO-3 Occupation"
-        )
+    fig = px.bar(
+        isco_long,
+        x="share",
+        y="isco_3_label",
+        color="skill_type",
+        orientation="h",
+        color_discrete_map={
+            "Hard": "#3B6C8E",
+            "Soft": "#94A3B8"
+        },
+        labels={
+            "share": "Share of skill mentions (%)",
+            "isco_3_label": " ",
+            "skill_type": "Skill type"
+        },
+        title="Distribution of Hard and Soft Skill Requirements by ISCO-3 Occupation"
+    )
 
-        fig.update_layout(
-            barmode="stack",
+    fig.update_layout(
+        barmode="stack",
             xaxis_range=[0, 100],
             yaxis=dict(autorange="reversed"),
             font=dict(color="#1F2933"),
-            margin=dict(t=60, l=40, r=120, b=90),  # Increased right margin from r=90 to r=120
             paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)"
-        )
+        plot_bgcolor="rgba(0,0,0,0)",
+        height=600
+    )
 
-        fig.update_traces(
-            texttemplate="%{x:.1f}%",
-            textposition="inside"
-        )
+    fig.update_traces(
+        texttemplate="%{x:.1f}%",
+        textposition="inside"
+    )
 
-        show_chart_with_card(fig)
-
-    # -----------------
+    show_chart_with_card(fig)    # -----------------
     # Extracting most valued soft and hard skills -- Bubble chart 
     # -----------------
 
@@ -344,7 +340,6 @@ def show_skills_page():
         ),
         legend_title_text="Skill type",
         font=dict(color="#1F2933"),
-        margin=dict(t=90, l=90, r=90, b=90),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)"
     )
@@ -352,194 +347,107 @@ def show_skills_page():
     # --------------
     # Skills specialization vs diversification 
     # --------------
-    col1, col2 = st.columns(2)
+    # overview of skills diversity and qty per domain 
+    skill_dvsc_df = base_df.copy()
 
-    with col1:
-        # overview of skills diversity and qty per domain 
-        skill_dvsc_df = base_df.copy()
+    skill_dvsc_df["hard_skills"] = skill_dvsc_df["hard_skills"].apply(restore_list_safe)
+    skill_dvsc_df["soft_skills"] = skill_dvsc_df["soft_skills"].apply(restore_list_safe)
 
-        skill_dvsc_df["hard_skills"] = skill_dvsc_df["hard_skills"].apply(restore_list_safe)
-        skill_dvsc_df["soft_skills"] = skill_dvsc_df["soft_skills"].apply(restore_list_safe)
+    skill_dvsc_df["all_skills"] = skill_dvsc_df.apply(
+        lambda r: list(set(r["hard_skills"] + r["soft_skills"])),
+        axis=1
+    )
 
-        skill_dvsc_df["all_skills"] = skill_dvsc_df.apply(
-            lambda r: list(set(r["hard_skills"] + r["soft_skills"])),
-            axis=1
+    exploded = skill_dvsc_df.explode("all_skills")
+    exploded = exploded[
+        exploded["all_skills"].notna() & (exploded["all_skills"] != "")
+    ]
+
+    isco_skill_stats = (
+        exploded
+        .groupby("isco_3_label")
+        .agg(
+            total_skill_mentions=("all_skills", "count"),
+            unique_skills=("all_skills", "nunique"),
+            job_count=("job_id", "nunique")
         )
+        .reset_index()
+    )
 
-        exploded = skill_dvsc_df.explode("all_skills")
-        exploded = exploded[
-            exploded["all_skills"].notna() & (exploded["all_skills"] != "")
-        ]
+    MIN_JOBS = 30
+    isco_skill_stats = isco_skill_stats[
+        isco_skill_stats["job_count"] >= MIN_JOBS
+    ]
 
-        isco_skill_stats = (
-            exploded
-            .groupby("isco_3_label")
-            .agg(
-                total_skill_mentions=("all_skills", "count"),
-                unique_skills=("all_skills", "nunique"),
-                job_count=("job_id", "nunique")
-            )
-            .reset_index()
+    # ------------------
+    # ISCO selector
+    # ------------------
+    isco_options = ["All"] + sorted(isco_skill_stats["isco_3_label"].unique().tolist())
+
+    selected_isco = st.selectbox(
+        "Highlight an ISCO-3 occupation:",
+        isco_options,
+        index=0
+    )
+
+    # Color logic
+    if selected_isco == "All":
+        isco_skill_stats["color"] = isco_skill_stats["isco_3_label"]
+        color_map = None
+    else:
+        isco_skill_stats["color"] = isco_skill_stats["isco_3_label"].apply(
+            lambda x: "Selected ISCO" if x == selected_isco else "Other ISCOs"
         )
+        color_map = {
+            "Selected ISCO": "#3B6C8E",
+            "Other ISCOs": "#D1D5DB"
+        }
 
-        MIN_JOBS = 30
-        isco_skill_stats = isco_skill_stats[
-            isco_skill_stats["job_count"] >= MIN_JOBS
-        ]
+    # ------------------
+    # Plot
+    # ------------------
+    fig = px.scatter(
+        isco_skill_stats,
+        x="unique_skills",
+        y="total_skill_mentions",
+        size="job_count",
+        color="color",
+        hover_name="isco_3_label",
+        size_max=60,
+        labels={
+            "unique_skills": "Number of unique skills",
+            "total_skill_mentions": "Total skill mentions",
+            "job_count": "Number of job postings",
+            "color": ""
+        },
+        title="Skill Concentration vs Diversification by ISCO-3 Occupation",
+        color_discrete_map=color_map,
+        template="plotly_white"
+    )
 
-        # ------------------
-        # ISCO selector
-        # ------------------
-        isco_options = ["All"] + sorted(isco_skill_stats["isco_3_label"].unique().tolist())
-
-        selected_isco = st.selectbox(
-            "Highlight an ISCO-3 occupation:",
-            isco_options,
-            index=0
+    fig.update_traces(
+        marker=dict(
+            opacity=0.85,
+            line=dict(width=1, color="white")
         )
+    )
 
-        # Color logic
-        if selected_isco == "All":
-            isco_skill_stats["color"] = isco_skill_stats["isco_3_label"]
-            color_map = None
-        else:
-            isco_skill_stats["color"] = isco_skill_stats["isco_3_label"].apply(
-                lambda x: "Selected ISCO" if x == selected_isco else "Other ISCOs"
-            )
-            color_map = {
-                "Selected ISCO": "#3B6C8E",
-                "Other ISCOs": "#D1D5DB"
-            }
+    fig.update_layout(
+        showlegend=(selected_isco != "All"),
+        legend_title_text="",
+        font=dict(color="#1F2933"),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        height=500
+    )
 
-        # ------------------
-        # Plot
-        # ------------------
-        fig = px.scatter(
-            isco_skill_stats,
-            x="unique_skills",
-            y="total_skill_mentions",
-            size="job_count",
-            color="color",
-            hover_name="isco_3_label",
-            size_max=60,
-            labels={
-                "unique_skills": "Number of unique skills",
-                "total_skill_mentions": "Total skill mentions",
-                "job_count": "Number of job postings",
-                "color": ""
-            },
-            title="Skill Concentration vs Diversification by ISCO-3 Occupation",
-            color_discrete_map=color_map,
-            template="plotly_white"
-        )
+    x_med = isco_skill_stats["unique_skills"].median()
+    y_med = isco_skill_stats["total_skill_mentions"].median()
 
-        fig.update_traces(
-            marker=dict(
-                opacity=0.85,
-                line=dict(width=1, color="white")
-            )
-        )
+    fig.add_vline(x=x_med, line_dash="dot", line_color="gray")
+    fig.add_hline(y=y_med, line_dash="dot", line_color="gray")
 
-        fig.update_layout(
-            showlegend=(selected_isco != "All"),
-            legend_title_text="",
-            font=dict(color="#1F2933"),
-            margin=dict(t=60, l=40, r=40, b=90),
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)"
-        )
-
-        x_med = isco_skill_stats["unique_skills"].median()
-        y_med = isco_skill_stats["total_skill_mentions"].median()
-
-        fig.add_vline(x=x_med, line_dash="dot", line_color="gray")
-        fig.add_hline(y=y_med, line_dash="dot", line_color="gray")
-
-        show_chart_with_card(fig)
-
-    with col2:
-        # Skill diversity overview 
-        skill_dvsc_df = base_df.copy()
-
-        skill_dvsc_df["hard_skills"] = skill_dvsc_df["hard_skills"].apply(restore_list_safe)
-        skill_dvsc_df["soft_skills"] = skill_dvsc_df["soft_skills"].apply(restore_list_safe)
-
-        skill_dvsc_df["all_skills"] = skill_dvsc_df.apply(
-            lambda r: list(set(r["hard_skills"] + r["soft_skills"])),
-            axis=1
-        )
-
-        exploded = skill_dvsc_df.explode("all_skills")
-        exploded = exploded[
-            exploded["all_skills"].notna() & (exploded["all_skills"] != "")
-        ]
-
-        isco_skill_stats = (
-            exploded
-            .groupby("isco_3_label")
-            .agg(
-                total_skill_mentions=("all_skills", "count"),
-                unique_skills=("all_skills", "nunique"),
-                job_count=("job_id", "nunique")
-            )
-            .reset_index()
-        )
-
-        MIN_JOBS = 30
-        isco_skill_stats = isco_skill_stats[
-            isco_skill_stats["job_count"] >= MIN_JOBS
-        ]
-
-        MAX_LEN = 40
-        isco_skill_stats["isco_short"] = isco_skill_stats["isco_3_label"].apply(
-            lambda x: x if len(x) <= MAX_LEN else x[:MAX_LEN] + "…"
-        )
-
-        isco_skill_stats["skill_diversification_ratio"] = (
-            isco_skill_stats["unique_skills"]
-            / isco_skill_stats["total_skill_mentions"]
-        )
-        plot_df = isco_skill_stats.sort_values("skill_diversification_ratio")
-
-        fig = px.bar(
-            plot_df,
-            x="skill_diversification_ratio",
-            y="isco_3_label",   # use full unique label as axis category
-            orientation="h",
-            hover_name="isco_3_label",
-            hover_data={
-                "isco_short": True,
-                "unique_skills": True,
-                "total_skill_mentions": True,
-                "job_count": True,
-                "skill_diversification_ratio": ":.3f"
-            },
-            labels={
-                "skill_diversification_ratio": "Skill diversification ratio",
-                "isco_3_label": "ISCO-3 occupation"
-            },
-            color="skill_diversification_ratio",
-            color_continuous_scale="Blues",
-            template="plotly_white"
-        )
-
-        # Replace tick labels with the shortened version
-        fig.update_yaxes(
-            tickmode="array",
-            tickvals=plot_df["isco_3_label"].tolist(),
-            ticktext=plot_df["isco_short"].tolist()
-        )
-
-        fig.update_layout(
-            height=900,
-            font=dict(color="#1F2933"),
-            margin=dict(t=60, l=40, r=20, b=90),
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            coloraxis_showscale=False
-        )
-
-        show_chart_with_card(fig)
+    show_chart_with_card(fig)
     
     # ----------------- 
     # Skills co-occurrence Network 
@@ -646,7 +554,6 @@ def show_skills_page():
             title=f"Skill Co-occurrence Network — {selected_isco}",
             showlegend=False,
             hovermode="closest",
-            margin=dict(t=60, l=20, r=20, b=20),
             font=dict(color="#1F2933"),
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",

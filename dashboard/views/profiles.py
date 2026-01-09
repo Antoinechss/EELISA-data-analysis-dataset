@@ -64,7 +64,6 @@ def create_cluster_projection_chart(df_clustered, profiles):
     )
     
     fig.update_layout(
-        margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color=COLOR_PALETTE['text_primary']),
         showlegend=True,
         legend=dict(
@@ -126,7 +125,6 @@ def create_profile_radar_chart(cluster_stats):
         ),
         title="Profile Characteristics",
         height=400,
-        margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color=COLOR_PALETTE['text_primary']),
         plot_bgcolor='white',
         paper_bgcolor='white'
@@ -160,7 +158,6 @@ def create_occupation_distribution_chart(cluster_stats):
     
     fig.update_layout(
         height=max(250, len(df_isco) * 45),
-        margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color=COLOR_PALETTE['text_primary']),
         showlegend=False,
         yaxis=dict(autorange="reversed"),
@@ -220,7 +217,6 @@ def create_geographic_distribution_chart(cluster_stats):
     
     fig.update_layout(
         height=400,
-        margin=dict(t=60, l=20, r=20, b=60),
         font=dict(color=COLOR_PALETTE['text_primary']),
         coloraxis_showscale=True,
         plot_bgcolor='white',

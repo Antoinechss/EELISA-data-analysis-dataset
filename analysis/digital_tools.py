@@ -105,92 +105,99 @@ def display_tools_analysis(df):
     st.title("Digital Tools Analysis")
     st.caption("Context-aware extraction of technical tools from job descriptions")
 
-    col1, col2 = st.columns([4, 2])
-    with col1: 
-        df["tech_tools"] = df["full_description"].apply(extract_tech_tools)
-        df["filtered_tools"] = df["tech_tools"].apply(lambda d: list(d.keys()))
+    # Process the data once for both charts
+    df["tech_tools"] = df["full_description"].apply(extract_tech_tools)
+    df["filtered_tools"] = df["tech_tools"].apply(lambda d: list(d.keys()))
 
-        tool_counts = Counter(chain.from_iterable(df["filtered_tools"]))
+    tool_counts = Counter(chain.from_iterable(df["filtered_tools"]))
 
-        if not tool_counts:
-            st.warning("No tools detected.")
-            return
+    if not tool_counts:
+        st.warning("No tools detected.")
+        return
 
-        top_tools = tool_counts.most_common(30)
-        treemap_df = pd.DataFrame(top_tools, columns=["tool", "count"])
+    top_tools = tool_counts.most_common(20)
+    treemap_df = pd.DataFrame(top_tools, columns=["tool", "count"])
 
-        # =======================
-        # PROFESSIONAL TREEMAP with centralized styling
-        # =======================
+    # =======================
+    # PROFESSIONAL TREEMAP with centralized styling
+    # =======================
 
-        # Create professional color scale using COLOR_PALETTE
-        treemap_colors = [
-            COLOR_PALETTE["page_background"],   # Light background
-            COLOR_PALETTE["border_medium"],     # Muted for lower values
-            COLOR_PALETTE["chart_teal"],        # Teal accent color
-            COLOR_PALETTE["primary_blue"]       # Primary blue for highest values
-        ]
-        
-        # Create custom colorscale
-        custom_colorscale = [
-            [0.0, treemap_colors[0]],
-            [0.3, treemap_colors[1]], 
-            [0.7, treemap_colors[2]],
-            [1.0, treemap_colors[3]]
-        ]
+    # Create professional color scale using COLOR_PALETTE
+    treemap_colors = [
+        COLOR_PALETTE["page_background"],   # Light background
+        COLOR_PALETTE["border_medium"],     # Muted for lower values
+        COLOR_PALETTE["chart_teal"],        # Teal accent color
+        COLOR_PALETTE["primary_blue"]       # Primary blue for highest values
+    ]
+    
+    # Create custom colorscale
+    custom_colorscale = [
+        [0.0, treemap_colors[0]],
+        [0.3, treemap_colors[1]], 
+        [0.7, treemap_colors[2]],
+        [1.0, treemap_colors[3]]
+    ]
 
-        fig = go.Figure(go.Treemap(
-            labels=[f"{t}<br>{c} jobs" for t, c in top_tools],
-            values=treemap_df["count"],
-            parents=[""] * len(treemap_df),
-            root=dict(color=COLOR_PALETTE["card_background"]),
-            marker=dict(
-                colors=treemap_df["count"],
-                colorscale=custom_colorscale,
-                line=dict(width=2, color=COLOR_PALETTE["card_background"]),
-                showscale=False
-            ),
-            textfont=dict(
-                size=12,
-                color=COLOR_PALETTE["text_primary"]
-            ),
-            hovertemplate="<b>%{label}</b><br>Mentions: %{value}<extra></extra>"
-        ))
+    fig = go.Figure(go.Treemap(
+        labels=[f"{t}<br>{c} jobs" for t, c in top_tools],
+        values=treemap_df["count"],
+        parents=[""] * len(treemap_df),
+        root=dict(color=COLOR_PALETTE["card_background"]),
+        marker=dict(
+            colors=treemap_df["count"],
+            colorscale=custom_colorscale,
+            line=dict(width=2, color=COLOR_PALETTE["card_background"]),
+            showscale=False
+        ),
+        textfont=dict(
+            size=12,
+            color=COLOR_PALETTE["text_primary"]
+        ),
+        hovertemplate="<b>%{label}</b><br>Mentions: %{value}<extra></extra>"
+    ))
 
-        fig.update_layout(
-            title="Digital Tools Mentioned in Job Postings",
-            height=650,
-            paper_bgcolor=COLOR_PALETTE["card_background"],
-            font=dict(color=COLOR_PALETTE["text_primary"], size=12),
-            title_font=dict(color=COLOR_PALETTE["text_primary"], size=18),
-            margin=dict(t=80, l=40, r=40, b=40)
-        )
+    fig.update_layout(
+        title="Digital Tools Mentioned in Job Postings",
+        height=500,
+        paper_bgcolor=COLOR_PALETTE["card_background"],
+        font=dict(color=COLOR_PALETTE["text_primary"], size=12),
+        title_font=dict(color=COLOR_PALETTE["text_primary"], size=18),
+        margin=dict(t=80, l=40, r=40, b=40)
+    )
 
-        show_chart_with_card(fig)
+    show_chart_with_card(fig)
 
     # =======================
     # CATEGORY BAR CHART
     # =======================
-    with col2:
-        category_counts = {
-            cat: sum(tool_counts.get(t, 0) for t in tools)
-            for cat, tools in CATEGORIES.items()
-        }
+    
+    category_counts = {
+        cat: sum(tool_counts.get(t, 0) for t in tools)
+        for cat, tools in CATEGORIES.items()
+    }
 
-        fig_cat = px.bar(
-            x=list(category_counts.keys()),
-            y=list(category_counts.values()),
-            labels={"x": "Category", "y": "Mentions"},
-            title="Tool Mentions by Category",
-            color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
-        )
+    fig_cat = px.bar(
+        x=list(category_counts.keys()),
+        y=list(category_counts.values()),
+        labels={"x": "Category", "y": "Mentions"},
+        title="Tool Mentions by Category",
+        color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
+    )
 
-        fig_cat.update_layout(
-            template="plotly_white",
-            paper_bgcolor=COLOR_PALETTE["card_background"],
-            font=dict(color=COLOR_PALETTE["text_primary"]),
-            title_font=dict(color=COLOR_PALETTE["text_primary"], size=18),
-            xaxis_tickangle=-30,
-            margin=dict(t=60, l=20, r=20, b=150)
-        )
-        show_chart_with_card(fig_cat)
+    fig_cat.update_layout(
+        template="plotly_white",
+        paper_bgcolor=COLOR_PALETTE["card_background"],
+        font=dict(color=COLOR_PALETTE["text_primary"]),
+        title_font=dict(color=COLOR_PALETTE["text_primary"], size=18),
+        xaxis_tickangle=-45,
+        xaxis=dict(
+            tickmode='array',
+            tickvals=list(range(len(category_counts))),
+            ticktext=list(category_counts.keys()),
+            automargin=True
+        ),
+        margin=dict(t=60, l=50, r=50, b=180),
+        height=400
+    )
+    
+    show_chart_with_card(fig_cat)

@@ -188,7 +188,7 @@ def get_default_layout(**kwargs):
             'bordercolor': COLOR_PALETTE['border_light'],
             'borderwidth': 1
         },
-        'margin': {'t': 60, 'l': 60, 'r': 20, 'b': 60}
+        'margin': {'t': 80, 'l': 80, 'r': 150, 'b': 140}
     }
     
     # Override with any provided kwargs
@@ -196,9 +196,18 @@ def get_default_layout(**kwargs):
     return default_layout
 
 def apply_chart_style(fig, **layout_kwargs):
-    """Apply consistent styling to a Plotly figure."""
     layout = get_default_layout(**layout_kwargs)
     fig.update_layout(layout)
+
+    fig.update_xaxes(automargin=True)
+    fig.update_yaxes(automargin=True)
+
+    if getattr(fig.layout, "_needs_large_bottom_margin", False):
+        fig.update_layout(margin=dict(b=260))
+
+    if getattr(fig.layout, "_needs_large_left_margin", False):
+        fig.update_layout(margin=dict(l=300))
+
     return fig
 
 def create_styled_bar_chart(data, x, y, title, color=None, orientation='v'):

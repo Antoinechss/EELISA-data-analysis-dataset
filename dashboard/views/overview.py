@@ -160,11 +160,12 @@ def show_overview_page():
                         "<extra></extra>"
         )
 
+        fig.layout._needs_large_bottom_margin = True
+        
         fig.update_layout(
             xaxis_tickangle=-45,
             showlegend=False,
-            font=dict(color=COLOR_PALETTE["text_primary"]),
-            margin=dict(t=60, l=30, r=20, b=120)
+            font=dict(color=COLOR_PALETTE["text_primary"])
         )
 
         show_chart_with_card(fig)
@@ -202,7 +203,6 @@ def show_overview_page():
         fig_isco.update_layout(
             height=600,
             yaxis=dict(autorange="reversed"),  # largest on top
-            margin=dict(t=60, l=40, r=20, b=90),
             font=dict(color=COLOR_PALETTE["text_primary"])
         )
 
@@ -216,61 +216,57 @@ def show_overview_page():
     # ----------------------------
     # ISCO × Country Chloropleth map 
     # ----------------------------
-    col1, col2 = st.columns(2)
-    with col1: 
-        df = eur_jobs.copy()
+    
+    df = eur_jobs.copy()
 
-        df = df[
-            df["country_code"].notna() &
-            df["isco_3_digit_label"].notna()
-        ]
+    df = df[
+        df["country_code"].notna() &
+        df["isco_3_digit_label"].notna()
+    ]
 
-        # ISCO selector
-        isco_options = (
-            df["isco_3_digit_label"]
-            .value_counts()
-            .index
-            .tolist()
-        )
+    # ISCO selector
+    isco_options = (
+        df["isco_3_digit_label"]
+        .value_counts()
+        .index
+        .tolist()
+    )
 
-        selected_isco = st.selectbox(
-            "Select an ISCO-3 occupation:",
-            isco_options
-        )
+    selected_isco = st.selectbox(
+        "Select an ISCO-3 occupation:",
+        isco_options
+    )
 
-        df_isco = df[df["isco_3_digit_label"] == selected_isco]
+    df_isco = df[df["isco_3_digit_label"] == selected_isco]
 
-        country_counts = (
-            df_isco
-            .groupby("country_code")
-            .size()
-            .reset_index(name="job_count")
-        )
+    country_counts = (
+        df_isco
+        .groupby("country_code")
+        .size()
+        .reset_index(name="job_count")
+    )
 
-        # Convert ISO-2 to ISO-3 codes
-        country_counts["country_code_iso3"] = country_counts["country_code"].str.lower().map(ISO2_TO_ISO3)
-        
-        # Filter out any unmapped codes
-        country_counts = country_counts[country_counts["country_code_iso3"].notna()]
+    # Convert ISO-2 to ISO-3 codes
+    country_counts["country_code_iso3"] = country_counts["country_code"].str.lower().map(ISO2_TO_ISO3)
+    
+    # Filter out any unmapped codes
+    country_counts = country_counts[country_counts["country_code_iso3"].notna()]
 
-        fig = px.choropleth(
-            country_counts,
-            locations="country_code_iso3",  # Use ISO-3 codes
-            color="job_count",
-            locationmode="ISO-3",  # Changed from ISO-2 to ISO-3
-            scope="europe",
-            color_continuous_scale="Blues",
-            labels={"job_count": "Number of job postings"},
-            title=f"Geographic Distribution of {selected_isco}"
-        )
-        fig.update_layout(
-            height=600,
-            margin=dict(t=60, l=20, r=20, b=20),
-            font=dict(color=COLOR_PALETTE["text_primary"]),
-            coloraxis_showscale=False,
-            paper_bgcolor="rgba(0,0,0,0)"
-        )
+    fig = px.choropleth(
+        country_counts,
+        locations="country_code_iso3",  # Use ISO-3 codes
+        color="job_count",
+        locationmode="ISO-3",  # Changed from ISO-2 to ISO-3
+        scope="europe",
+        color_continuous_scale="Blues",
+        labels={"job_count": "Number of job postings"},
+        title=f"Geographic Distribution of {selected_isco}"
+    )
+    fig.update_layout(
+        height=600,
+        font=dict(color=COLOR_PALETTE["text_primary"]),
+        coloraxis_showscale=False,
+        paper_bgcolor="rgba(0,0,0,0)"
+    )
 
-        show_chart_with_card(fig)
-    with col2: 
-        pass
+    show_chart_with_card(fig)

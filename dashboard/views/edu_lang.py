@@ -75,19 +75,12 @@ def render_education_section(base_df: pd.DataFrame):
         key="edu_agg"
     )
 
-    # KPI card: share of jobs mentioning education requirements
+    # KPI: share of jobs mentioning education requirements
     share_edu_req = edu_df["has_education_requirement"].mean() * 100
-    fig_kpi = go.Figure(go.Indicator(
-        mode="number",
-        value=share_edu_req,
-        number={"suffix": "%"},
-        title={"text": "Jobs Explicitly Mentioning Education Requirements"}
-    ))
-    fig_kpi.update_layout(
-        margin=dict(t=35, l=20, r=20, b=15),
-        font=dict(color=COLOR_PALETTE["text_primary"])
+    st.metric(
+        label="Jobs Explicitly Mentioning Education Requirements",
+        value=f"{share_edu_req:.1f}%"
     )
-    show_chart_with_card(fig_kpi, height=170)
 
     # Only jobs with a cleaned level for level distribution plots
     edu_levels = edu_df[edu_df["education_level_clean"].notna()].copy()
@@ -119,7 +112,6 @@ def render_education_section(base_df: pd.DataFrame):
         fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
         fig.update_layout(
             yaxis_range=[0, 100],
-            margin=dict(t=55, l=40, r=20, b=40),
             font=dict(color=COLOR_PALETTE["text_primary"])
         )
         show_chart_with_card(fig)
@@ -147,10 +139,11 @@ def render_education_section(base_df: pd.DataFrame):
             title="Education Level Distribution by Country",
             color_discrete_sequence=[COLOR_PALETTE["border_medium"], COLOR_PALETTE["primary_blue"], COLOR_PALETTE["text_primary"]]
         )
+        fig.layout._needs_large_bottom_margin = True
+        
         fig.update_layout(
             yaxis_range=[0, 100],
             xaxis_tickangle=-45,
-            margin=dict(t=55, l=40, r=20, b=90),
             font=dict(color=COLOR_PALETTE["text_primary"]),
             legend_title_text="Education level"
         )
@@ -192,7 +185,6 @@ def render_education_section(base_df: pd.DataFrame):
         fig.update_layout(
             xaxis_range=[0, 100],
             yaxis=dict(autorange="reversed"),
-            margin=dict(t=55, l=40, r=20, b=40),
             font=dict(color=COLOR_PALETTE["text_primary"]),
             legend_title_text="Education level"
         )
@@ -336,18 +328,11 @@ def render_language_section(base_df: pd.DataFrame):
     )
     language_share = lang_df["has_language_requirement"].mean() * 100
 
-    # Create simple metric indicator (same as education section)
-    fig_metric = go.Figure(go.Indicator(
-        mode="number",
-        value=language_share,
-        number={"suffix": "%"},
-        title={"text": "Jobs Requiring a Language Proficiency"}
-    ))
-    fig_metric.update_layout(
-        margin=dict(t=35, l=20, r=20, b=15),
-        font=dict(color=COLOR_PALETTE["text_primary"])
+    # Simple metric for language requirements
+    st.metric(
+        label="Jobs Requiring a Language Proficiency",
+        value=f"{language_share:.1f}%"
     )
-    show_chart_with_card(fig_metric, height=170)
 
     # Distribution of languages (only among explicit mentions)
     df_lang = lang_df.explode("languages").copy()
@@ -378,7 +363,6 @@ def render_language_section(base_df: pd.DataFrame):
     )
     fig_lang.update_layout(
         yaxis=dict(autorange="reversed"),
-        margin=dict(t=55, l=40, r=20, b=40),
         font=dict(color=COLOR_PALETTE["text_primary"])
     )
     show_chart_with_card(fig_lang)
@@ -485,11 +469,13 @@ def create_isced_isco_heatmap(base_df: pd.DataFrame):
         xaxis_title="ISCO-3 Occupation",
         yaxis_title="ISCED Education Field",
         height=500,
-        margin=dict(t=60, l=200, r=40, b=150),
         font=dict(color=COLOR_PALETTE["text_primary"]),
         xaxis=dict(tickangle=45)
     )
-    
+
+    fig.layout._needs_large_bottom_margin = True
+    fig.layout._needs_large_left_margin = True
+        
     show_chart_with_card(fig)
     
     # Show summary statistics
@@ -607,7 +593,6 @@ def create_isced_geo_map(base_df: pd.DataFrame):
     
     fig.update_layout(
         height=500,
-        margin=dict(t=60, l=20, r=20, b=90),
         font=dict(color=COLOR_PALETTE["text_primary"]),
         paper_bgcolor="rgba(0,0,0,0)",
         coloraxis_showscale=False  # Remove color bar
@@ -695,7 +680,6 @@ def create_isced_level_distribution(base_df: pd.DataFrame):
     fig.update_layout(
         height=max(400, top_n * 40),  # Dynamic height based on bars
         yaxis=dict(autorange="reversed"),  # Largest on top
-        margin=dict(t=60, l=40, r=120, b=90),
         font=dict(color=COLOR_PALETTE["text_primary"]),
         showlegend=False,
         coloraxis_showscale=False
@@ -781,19 +765,17 @@ def render_ISCED_section(base_df: pd.DataFrame):
         except FileNotFoundError:
             st.warning("Official documentation not found")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        # ISCED Field × ISCO Domain Matrix - IMPLEMENTED!
-        create_isced_isco_heatmap(base_df)
-        st.markdown("---")
-        # Education Level Distribution - IMPLEMENTED!
-        create_isced_level_distribution(base_df)
-    with col2:
-        # Geo map of ISCED requests - IMPLEMENTED!
-        create_isced_geo_map(base_df)
-        st.markdown("---")
-        # Education Field × Sustainability (GreenComp Overlay) - NOW IMPLEMENTED!
-        create_isced_greencomp_overlay(base_df)
+    # ISCED Field × ISCO Domain Matrix - IMPLEMENTED!
+    create_isced_isco_heatmap(base_df)
+    st.markdown("---")
+    # Education Level Distribution - IMPLEMENTED!
+    create_isced_level_distribution(base_df)
+    st.markdown("---")
+    # Geo map of ISCED requests - IMPLEMENTED!
+    create_isced_geo_map(base_df)
+    st.markdown("---")
+    # Education Field × Sustainability (GreenComp Overlay) - NOW IMPLEMENTED!
+    create_isced_greencomp_overlay(base_df)
 
 
 def create_isced_greencomp_overlay(base_df: pd.DataFrame):
@@ -887,7 +869,6 @@ def create_isced_greencomp_overlay(base_df: pd.DataFrame):
         # Update layout
         fig.update_layout(
             height=500,
-            margin=dict(t=60, l=60, r=20, b=60),
             font=dict(color=COLOR_PALETTE["text_primary"]),
             xaxis_title="Number of Jobs in Field",
             yaxis_title="Sustainability Exposure Rate (%)",
@@ -983,18 +964,15 @@ def show_education_language_page(
     st.markdown("---")
 
     # Education qualifications requirements
-    col1, col2 = st.columns(2, gap="large")
-    with col1:
-        render_education_section(base_df)
-
-    with col2:
-        if enhanced_jobs is not None:
-            render_education_fields_section(enhanced_jobs)
-        else:
-            render_education_fields_section(base_df)
+    render_education_section(base_df)
+    st.markdown("---")
+    
+    if enhanced_jobs is not None:
+        render_education_fields_section(enhanced_jobs)
+    else:
+        render_education_fields_section(base_df)
     
     # Language section
     st.markdown("---")
-    col1, col2 = st.columns([3, 2])
     render_language_section(base_df)
 

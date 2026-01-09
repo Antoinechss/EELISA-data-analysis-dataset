@@ -55,155 +55,149 @@ def show_greencomp_page(df):
 
     st.markdown("---")
 
-    col1, col2 = st.columns([4, 2])
-
     # ---------------
-    # Radar Chart of DigComp competences
+    # Radar Chart of GreenComp competences
     # ---------------
 
-    with col1:
-        dig_df = base_df.copy()
+    dig_df = base_df.copy()
 
-        dig_df["green_competences"] = dig_df["green_competences"].apply(
-            restore_list_safe
+    dig_df["green_competences"] = dig_df["green_competences"].apply(
+        restore_list_safe
+    )
+
+    dig_exploded = dig_df.explode("green_competences")
+    dig_exploded = dig_exploded[
+        dig_exploded["green_competences"].notna()
+        & (dig_exploded["green_competences"] != "")
+    ]
+
+    if dig_exploded.empty:
+        st.info("No GreenComp competences explicitly identified in the dataset.")
+    else:
+        dig_counts = (
+            dig_exploded["green_competences"]
+            .value_counts()
+            .reset_index()
+        )
+        dig_counts.columns = ["competence", "count"]
+        
+        # Filter out "Valuing sustainability" to improve visibility of other competences
+        dig_counts = dig_counts[dig_counts["competence"] != "Valuing sustainability"]
+        
+        TOP_N = 8
+
+        dig_counts = (
+            dig_counts
+            .sort_values("count", ascending=False)
+            .head(TOP_N)
         )
 
-        dig_exploded = dig_df.explode("green_competences")
-        dig_exploded = dig_exploded[
-            dig_exploded["green_competences"].notna()
-            & (dig_exploded["green_competences"] != "")
-        ]
-
-        if dig_exploded.empty:
-            st.info("No GreenComp competences explicitly identified in the dataset.")
+        
+        total = dig_counts["count"].sum()
+        if total == 0:
+            st.info("No GreenComp competences available for visualisation.")
         else:
-            dig_counts = (
-                dig_exploded["green_competences"]
-                .value_counts()
-                .reset_index()
-            )
-            TOP_N = 8
+            dig_counts["share"] = dig_counts["count"] / total * 100
 
-            dig_counts = (
-                dig_counts
-                .sort_values("count", ascending=False)
-                .head(TOP_N)
-            )
+            categories = dig_counts["competence"].tolist()
+            values = dig_counts["share"].tolist()
 
-            dig_counts.columns = ["competence", "count"]
-
-            total = dig_counts["count"].sum()
-            if total == 0:
-                st.info("No GreenComp competences available for visualisation.")
+            if len(categories) < 3:
+                st.info("Not enough GreenComp competences to build a radar chart.")
             else:
-                dig_counts["share"] = dig_counts["count"] / total * 100
+                # Close the loop
+                categories = categories + [categories[0]]
+                values = values + [values[0]]
 
-                categories = dig_counts["competence"].tolist()
-                values = dig_counts["share"].tolist()
+                # Convert hex to rgba with transparency
+                primary_rgb = tuple(int(COLOR_PALETTE["chart_teal"][i:i+2], 16) for i in (1, 3, 5))
+                fill_color = f'rgba({primary_rgb[0]},{primary_rgb[1]},{primary_rgb[2]},0.3)'
 
-                if len(categories) < 3:
-                    st.info("Not enough GreenComp competences to build a radar chart.")
-                else:
-                    # Close the loop
-                    categories = categories + [categories[0]]
-                    values = values + [values[0]]
+                fig = go.Figure()
 
-                    # Convert hex to rgba with transparency
-                    primary_rgb = tuple(int(COLOR_PALETTE["primary_blue"][i:i+2], 16) for i in (1, 3, 5))
-                    fill_color = f'rgba({primary_rgb[0]},{primary_rgb[1]},{primary_rgb[2]},0.3)'
+                fig.add_trace(
+                    go.Scatterpolar(
+                        r=values,
+                        theta=categories,
+                        fill="toself",
+                        line=dict(color=COLOR_PALETTE["chart_teal"], width=2),
+                        fillcolor=fill_color,
+                        name="GreenComp"
+                    )
+                )
 
-                    fig = go.Figure()
-
-                    fig.add_trace(
-                        go.Scatterpolar(
-                            r=values,
-                            theta=categories,
-                            fill="toself",
-                            line=dict(color=COLOR_PALETTE["primary_blue"], width=2),
-                            fillcolor=fill_color,
-                            name="GreenComp"
+                fig.update_layout(
+                    title="Relative Importance of GreenComp Competences in Job Postings",
+                    polar=dict(
+                        radialaxis=dict(
+                            visible=True,
+                            ticksuffix="%",
+                            range=[0, max(values) * 1.1]
                         )
-                    )
+                    ),
+                    showlegend=False,
+                    font=dict(color=COLOR_PALETTE["text_primary"]),
+                    paper_bgcolor="rgba(0,0,0,0)",
+                    plot_bgcolor="rgba(0,0,0,0)",
+                    height=500
+                )
 
-                    fig.update_layout(
-                        title="Relative Importance of GreenComp Competences in Job Postings",
-                        polar=dict(
-                            radialaxis=dict(
-                                visible=True,
-                                ticksuffix="%",
-                                range=[0, max(values) * 1.1]
-                            )
-                        ),
-                        showlegend=False,
-                        font=dict(color=COLOR_PALETTE["text_primary"]),
-                        margin=dict(t=60, l=40, r=40, b=90),
-                        paper_bgcolor="rgba(0,0,0,0)",
-                        plot_bgcolor="rgba(0,0,0,0)"
-                    )
+                show_chart_with_card(fig, height=None)
+    
+    # Calculate share of jobs mentioning GreenComp competences
+    green_df = base_df.copy()
+    
+    # Process green competences
+    green_df["green_competences"] = green_df["green_competences"].apply(
+        restore_list_safe
+    )
+    
+    # Check which jobs have at least one GreenComp competence
+    green_df["has_greencomp"] = green_df["green_competences"].apply(
+        lambda x: isinstance(x, list) and len(x) > 0 and any(
+            comp.strip() for comp in x
+        )
+    )
+    
+    # Calculate percentage
+    greencomp_share = green_df["has_greencomp"].mean() * 100
+    
+    # Simple metric for GreenComp competences
+    st.metric(
+        label="Jobs Explicitly Mentioning GreenComp Competences",
+        value=f"{greencomp_share:.1f}%"
+    )
 
-                    show_chart_with_card(fig, height=None)
-    with col2:
-        # Calculate share of jobs mentioning GreenComp competences
-        green_df = base_df.copy()
-        
-        # Process green competences
-        green_df["green_competences"] = green_df["green_competences"].apply(
-            restore_list_safe
-        )
-        
-        # Check which jobs have at least one GreenComp competence
-        green_df["has_greencomp"] = green_df["green_competences"].apply(
-            lambda x: isinstance(x, list) and len(x) > 0 and any(
-                comp.strip() for comp in x
-            )
-        )
-        
-        # Calculate percentage
-        greencomp_share = green_df["has_greencomp"].mean() * 100
-        
-        # Create metric chart
-        fig_metric = go.Figure(go.Indicator(
-            mode="number",
-            value=greencomp_share,
-            number={"suffix": "%"},
-            title={"text": "Jobs Explicitly Mentioning GreenComp Competences"}
-        ))
-        fig_metric.update_layout(
-            margin=dict(t=35, l=20, r=20, b=15),
-            font=dict(color=COLOR_PALETTE["text_primary"])
-        )
-        show_chart_with_card(fig_metric, height=170)
+    # Distribution of GreenComp Integration Index
+    green_df["green_competences"] = green_df["green_competences"].apply(
+        lambda x: x if isinstance(x, list) else []
+    )
+    green_df["green_distinct_count"] = green_df["green_competences"].apply(
+        lambda x: len(set(x))
+    )
+    green_df["green_total_mentions"] = green_df["green_competences"].apply(
+        len
+    )
+    green_df["green_integration_index"] = (
+        green_df["green_distinct_count"]
+        * np.log(green_df["green_total_mentions"] + 1)
+    )
+    fig_dist = px.histogram(
+        green_df,
+        x="green_integration_index",
+        nbins=40,
+        title="Distribution of GreenComp Integration Index",
+        labels={"green_integration_index": "GreenComp integration score"},
+        template="plotly_white",
+        color_discrete_sequence=[COLOR_PALETTE["chart_teal"]]
+    )
 
-        # Distribution of GreenComp Integration Index
-        green_df["green_competences"] = green_df["green_competences"].apply(
-            lambda x: x if isinstance(x, list) else []
-        )
-        green_df["green_distinct_count"] = green_df["green_competences"].apply(
-            lambda x: len(set(x))
-        )
-        green_df["green_total_mentions"] = green_df["green_competences"].apply(
-            len
-        )
-        green_df["green_integration_index"] = (
-            green_df["green_distinct_count"]
-            * np.log(green_df["green_total_mentions"] + 1)
-        )
-        fig_dist = px.histogram(
-            green_df,
-            x="green_integration_index",
-            nbins=40,
-            title="Distribution of GreenComp Integration Index",
-            labels={"green_integration_index": "GreenComp integration score"},
-            template="plotly_white",
-            color_discrete_sequence=[COLOR_PALETTE["primary_blue"]]
-        )
-
-        fig_dist.update_layout(
-            bargap=0.05,
-            margin=dict(t=60, l=40, r=40, b=90),
-            font=dict(color=COLOR_PALETTE["text_primary"])
-        )
-        show_chart_with_card(fig_dist)
+    fig_dist.update_layout(
+        bargap=0.05,
+        font=dict(color=COLOR_PALETTE["text_primary"]),
+        height=400
+    )
+    show_chart_with_card(fig_dist)
 
     isco_green = (
         green_df
@@ -233,7 +227,6 @@ def show_greencomp_page(df):
 
     fig_isco.update_layout(
         yaxis=dict(autorange="reversed"),
-        margin=dict(t=60, l=40, r=40, b=90),
         font=dict(color=COLOR_PALETTE["text_primary"]),
         coloraxis_showscale=False
     )
