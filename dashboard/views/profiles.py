@@ -80,8 +80,8 @@ def create_cluster_projection_chart(df_clustered, profiles):
     return fig
 
 
-def create_profile_radar_chart(cluster_stats):
-    """Create radar chart for profile characteristics."""
+def create_profile_bar_chart(cluster_stats):
+    """Create bar chart for profile characteristics."""
     
     metrics = cluster_stats.get('skill_metrics', {})
     transition = cluster_stats.get('transition_indicators', {})
@@ -104,28 +104,32 @@ def create_profile_radar_chart(cluster_stats):
         transition.get('high_digital_intensity', 0)
     ]
     
-    fig = go.Figure()
-    
-    fig.add_trace(go.Scatterpolar(
-        r=values,
-        theta=categories,
-        fill='toself',
-        name='Profile Signature',
-        line_color=COLOR_PALETTE['positive_green'],
-        fillcolor='rgba(16, 185, 129, 0.3)'
-    ))
+    # Create horizontal bar chart for better label visibility
+    fig = px.bar(
+        x=values,
+        y=categories,
+        orientation='h',
+        title="Profile Characteristics",
+        color_discrete_sequence=[COLOR_PALETTE['positive_green']]
+    )
     
     fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, 100],
-                ticksuffix='%'
-            )
-        ),
-        title="Profile Characteristics",
         height=400,
         font=dict(color=COLOR_PALETTE['text_primary']),
+        showlegend=False,
+        yaxis=dict(
+            autorange="reversed",
+            tickfont=dict(size=11),
+            title=None  # Remove y-axis title
+        ),
+        xaxis=dict(
+            range=[0, 100],
+            ticksuffix='%',
+            showgrid=True,
+            gridcolor='lightgray',
+            title=None  # Remove x-axis title
+        ),
+        margin=dict(l=150, r=50, t=50, b=50),  # Left margin for labels
         plot_bgcolor='white',
         paper_bgcolor='white'
     )
@@ -157,10 +161,20 @@ def create_occupation_distribution_chart(cluster_stats):
     )
     
     fig.update_layout(
-        height=max(250, len(df_isco) * 45),
+        height=max(350, len(df_isco) * 60),  # Increased height for better spacing
         font=dict(color=COLOR_PALETTE['text_primary']),
         showlegend=False,
-        yaxis=dict(autorange="reversed"),
+        yaxis=dict(
+            autorange="reversed",
+            tickmode='linear',  # Ensure all ticks are shown
+            showticklabels=True,
+            tickfont=dict(size=10),
+            title=None  # Remove y-axis title
+        ),
+        xaxis=dict(
+            title=None  # Remove x-axis title
+        ),
+        margin=dict(l=200, r=50, t=50, b=50),  # Increased left margin for labels
         plot_bgcolor='white',
         paper_bgcolor='white'
     )
@@ -340,26 +354,22 @@ def show_profiles_page(df):
     # Detailed visualizations
     st.markdown("##### Profile Characteristics")
     
-    # Top row: Radar chart (full width)
-    radar_fig = create_profile_radar_chart(cluster_stats)
-    show_chart_with_card(radar_fig)
+    # Top row: Bar chart (full width) for better visibility
+    bar_fig = create_profile_bar_chart(cluster_stats)
+    show_chart_with_card(bar_fig)
     
-    # Bottom row: Occupations and geography
-    col1, col2 = st.columns([1, 1])
-    
-    with col1:
-        occ_fig = create_occupation_distribution_chart(cluster_stats)
-        if occ_fig:
-            show_chart_with_card(occ_fig)
-        else:
-            st.info("Occupation data not available")
-    
-    with col2:
-        geo_fig = create_geographic_distribution_chart(cluster_stats)
-        if geo_fig:
-            show_chart_with_card(geo_fig)
-        else:
-            st.info("Geographic data not available")
+    # Bottom row: Occupations and geography (displayed vertically for better legend visibility)
+    occ_fig = create_occupation_distribution_chart(cluster_stats)
+    if occ_fig:
+        show_chart_with_card(occ_fig)
+    else:
+        st.info("Occupation data not available")
+
+    geo_fig = create_geographic_distribution_chart(cluster_stats)
+    if geo_fig:
+        show_chart_with_card(geo_fig)
+    else:
+        st.info("Geographic data not available")
     
     # Profile insights summary
     st.markdown("##### Key Insights")

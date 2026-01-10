@@ -81,8 +81,10 @@ def show_greencomp_page(df):
         )
         dig_counts.columns = ["competence", "count"]
         
-        # Filter out "Valuing sustainability" to improve visibility of other competences
-        dig_counts = dig_counts[dig_counts["competence"] != "Valuing sustainability"]
+        # Filter out overwhelming competences to improve visibility of others
+        dig_counts = dig_counts[
+            ~dig_counts["competence"].isin(["Valuing sustainability", "Adaptability", "Individual initiative"])
+        ]
         
         TOP_N = 8
 
@@ -127,7 +129,7 @@ def show_greencomp_page(df):
                 )
 
                 fig.update_layout(
-                    title="Relative Importance of GreenComp Competences in Job Postings",
+                    title="GreenComp Competences Distribution (Excluding Dominant Competences)",
                     polar=dict(
                         radialaxis=dict(
                             visible=True,
